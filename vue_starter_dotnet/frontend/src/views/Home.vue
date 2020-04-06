@@ -21,13 +21,14 @@
 //     Movie
 //   },
 // };
-// // data() {
-// //   return {
-// //     movie: {
-// //       title: "",
-// //       rated: "",
-// //       genre: "",
-
+//  data() {
+//   return {
+//    movie: {
+//      title: "",
+//      poster: ,
+//       rated: "",
+//      cast: "",
+//      plot: ""
 // //     }
 //   };
 // }
@@ -45,14 +46,14 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-image: lightcoral;
+  background-color: darkred;
   font-family: "Roboto", sans-serif;
 }
-#app {
+/* #app {
   width: 80vw;
   height: 100%;
   background-color: white;
-}
+} */
 header {
   height: 50px;
   width: 100%;
