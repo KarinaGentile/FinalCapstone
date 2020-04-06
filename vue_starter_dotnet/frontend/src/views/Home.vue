@@ -52,10 +52,12 @@ header {
   margin: 0;
   flex: 1;
   list-style-type: none;
+  float:left;
 }
 .nav li {
-  display: inline;
+  /* display: inline-block; */
   padding-right: 20px;
+   float:left;
 }
 .nav li a,
 .nav li a:visited {
@@ -65,34 +67,17 @@ header {
   font-size: 13px;
 }
 .nav li a:hover {
-  text-decoration: underline;
-}
-.nav-right {
-  flex: 1;
-  list-style-type: none;
-  padding: 14px;
-  margin: 0;
-  text-align: right;
-}
-.nav-right li {
-  display: inline;
-  padding-right: 20px;
-  vertical-align: middle;
-}
-.nav-right li a,
-.nav-right li a:visited {
   text-decoration: none;
-  color: rgb(56, 56, 146);
-  text-transform: uppercase;
-  font-size: 13px;
 }
-.nav-right li a:hover {
-  text-decoration: underline;
-}
+
 .fas {
   margin-right: 4px;
 }
 .content {
   padding: 20px;
 }
+ul {
+list-style-type: none;
+}
+
 </style>

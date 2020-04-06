@@ -11,12 +11,17 @@
         <div>
           <router-link :to="{name: 'login'}">Login</router-link>
         </div>
+ 
+         <div></div>
         <div>
           <router-link :to="{name: 'register'}">Register</router-link>
         </div>
+
+         <div></div>
       </div>
       <router-link to="/">Home</router-link>
     </div>
+
     <router-view />
   </div>
 </template>
@@ -47,3 +52,8 @@ export default {
   }
 };
 </script>
+<style>
+/* #nav {
+  float: left;
+} */
+</style>
