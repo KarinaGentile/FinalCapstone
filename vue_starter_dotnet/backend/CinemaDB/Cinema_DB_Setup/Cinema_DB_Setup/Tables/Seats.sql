@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Seats]
+(
+	[SeatId] INT NOT NULL PRIMARY KEY
+)

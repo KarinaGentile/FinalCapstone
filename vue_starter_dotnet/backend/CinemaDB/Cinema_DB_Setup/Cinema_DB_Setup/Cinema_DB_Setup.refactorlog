@@ -21,4 +21,46 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="TheaterId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="c943f975-d1be-4acb-8eda-3dcb57e40c0b" ChangeDateTime="04/06/2020 19:31:21">
+    <Property Name="ElementName" Value="[dbo].[Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UsersId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2d9dc9d7-83d0-4889-a6e9-0d9f8f3f7027" ChangeDateTime="04/06/2020 19:45:19">
+    <Property Name="ElementName" Value="[dbo].[Seats].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Seats]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SeatId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f0b6b876-f013-4cd8-b053-e9763e571858" ChangeDateTime="04/06/2020 19:47:33">
+    <Property Name="ElementName" Value="[dbo].[Tickets].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tickets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TicketId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7b33ae9b-c031-4184-8fda-4d2c457139cf" ChangeDateTime="04/06/2020 19:50:56">
+    <Property Name="ElementName" Value="[dbo].[Tickets].[price]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tickets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Purchases" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3c763a8b-4994-41f4-801f-66d8b580fb0c" ChangeDateTime="04/06/2020 20:00:59">
+    <Property Name="ElementName" Value="[dbo].[Tickets].[Purchases]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tickets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PurchasesId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="33a7dbc4-7cf4-4859-9028-7c0687ba55c2" ChangeDateTime="04/06/2020 20:01:13">
+    <Property Name="ElementName" Value="[dbo].[Purchases].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Purchases]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PurchasesId" />
+  </Operation>
 </Operations>
