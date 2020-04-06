@@ -15,9 +15,22 @@
 
 
 <script>
-export default {
-  name: 'home'
-}
+// export default {
+//   name: 'home',
+//     components: {
+//     Movie
+//   },
+// };
+// // data() {
+// //   return {
+// //     movie: {
+// //       title: "",
+// //       rated: "",
+// //       genre: "",
+
+// //     }
+//   };
+// }
 </script>
 <!--figure out layout for the list -->
 
