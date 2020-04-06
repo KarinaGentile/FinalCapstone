@@ -38,7 +38,7 @@ CREATE TABLE [dbo].[Movies]
 
 CREATE TABLE [dbo].[Showings]
 (
-	[ShowingsId] INT NOT NULL identity PRIMARY KEY, 
+	[ShowingId] INT NOT NULL identity PRIMARY KEY, 
     [MovieId] INT NOT NULL, 
     [StartTime] DATETIME NOT NULL, 
     [EndTime] DATETIME NOT NULL, 
@@ -46,6 +46,45 @@ CREATE TABLE [dbo].[Showings]
 
 	constraint fk_showing_theater foreign key (TheaterId) references theaters (TheaterId),
 	constraint fk_showing_movie foreign key (MovieId) references Movies (MovieId)
+)
+
+CREATE TABLE [dbo].[Users]
+(
+	[UserId] INT NOT NULL identity PRIMARY KEY, 
+    [email] NVARCHAR(50) NOT NULL, 
+    [password] NVARCHAR(MAX) NOT NULL
+)
+
+CREATE TABLE [dbo].[Purchases]
+(
+	[PurchaseId] INT NOT NULL identity PRIMARY KEY, 
+    [UserId] INT NOT NULL, 
+    [DateTime] DATETIME NOT NULL, 
+    [Total_Price] MONEY NOT NULL
+
+	constraint fk_purchase_user foreign key (UserId) references Users (UserId)
+)
+
+CREATE TABLE [dbo].[Seats]
+(
+	[SeatId] INT NOT NULL identity PRIMARY KEY,
+	[TheaterId] INT NOT NULL
+
+	constraint fk_seat_theater foreign key (TheaterId) references Theaters (TheaterId)
+)
+
+CREATE TABLE [dbo].[Tickets]
+(
+	[TicketId] INT NOT NULL identity PRIMARY KEY, 
+    [ShowingId] INT NOT NULL, 
+    [SeatId] INT NOT NULL, 
+    [PurchaseId] INT NOT NULL, 
+    [Price] MONEY NOT NULL
+
+	constraint fk_ticket_showing foreign key (ShowingId) references Showings (ShowingId),
+	constraint fk_ticket_purchase foreign key (PurchaseId) references Purchases (PurchaseId),
+	constraint fk_ticket_seat foreign key (SeatId) references Seats (SeatId)
+
 )
 
 insert into Movies
