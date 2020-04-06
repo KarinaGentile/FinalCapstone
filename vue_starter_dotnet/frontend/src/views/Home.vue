@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <section class="centeredPanel">
     <h1>Now Playing:</h1>
     <ul>
     <li></li>
@@ -7,6 +8,7 @@
     <li></li>
     </ul>
     <p></p>
+    </section>
   </div>
 </template>
 
@@ -47,7 +49,8 @@ body {
   justify-content: center;
   align-items: center;
   background-color: darkred;
-  font-family: "Roboto", sans-serif;
+  background-image: url("../../src/backgroundimg.jpg");
+  font-family: "Helvetica", sans-serif;
 }
 /* #app {
   width: 80vw;
@@ -93,5 +96,24 @@ header {
 ul {
 list-style-type: none;
 }
-
+section.centeredPanel {
+    clear: both;
+    display: block;
+    width: 100%;
+    /* vertical-align: top; */
+    min-height: 450px;
+    min-width: 500px;
+    background-color: rgb(100, 90, 90);
+    border-radius: 7px;
+    margin: 20px auto;
+    padding-top: 0.5px;
+    padding-bottom: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    align-content: center;
+    text-align: center;
+}
+h1 {
+  font-weight: bold;
+}
 </style>
