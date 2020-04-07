@@ -32,7 +32,8 @@ CREATE TABLE [dbo].[Movies]
 	[Rating] NVARCHAR(10) NULL,
 	[Runtime] INT NULL,
 	[Cast] NVARCHAR(MAX) NULL,
-	[Plot] NVARCHAR(MAX) NULL
+	[Plot] NVARCHAR(MAX) NULL,
+	[Genre] NVARCHAR(25) NOT NULL
 
 )
 
@@ -88,11 +89,11 @@ CREATE TABLE [dbo].[Tickets]
 )
 
 insert into Movies
-(Title, IMDBId, Rating, Runtime, Plot, Cast, PosterURL)
+(Title, IMDBId, Rating, Runtime, Plot, Cast, PosterURL, Genre)
 values
-('Forrest Gump','tt0109830','PG-13', 142,'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.','Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys','https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg')
-,('Bee Movie','tt0389790','PG', 124,'Barry B. Benson, a bee just graduated from college, is disillusioned at his lone career choice: making honey. On a special trip outside the hive, Barrys life is saved by Vanessa, a florist in New York City. As their relationship blossoms, he discovers humans actually eat honey, and subsequently decides to sue them.', 'Jerry Seinfeld, Renée Zellweger, Matthew Broderick, Patrick Warburton', 'https://m.media-amazon.com/images/M/MV5BMjE1MDYxOTA4MF5BMl5BanBnXkFtZTcwMDE0MDUzMw@@._V1_SX300.jpg')
-,('Catch Me If You Can','tt0264464','PG-13', 141,'A seasoned FBI agent pursues Frank Abagnale Jr. who, before his 19th birthday, successfully forged millions of dollars worth of checks while posing as a Pan Am pilot, a doctor, and a legal prosecutor.','Leonardo DiCaprio, Tom Hanks, Christopher Walken, Martin Sheen','https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg')
+('Forrest Gump','tt0109830','PG-13', 142,'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.','Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys','https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg', 'Comedy-Drama')
+,('Bee Movie','tt0389790','PG', 124,'Barry B. Benson, a bee just graduated from college, is disillusioned at his lone career choice: making honey. On a special trip outside the hive, Barrys life is saved by Vanessa, a florist in New York City. As their relationship blossoms, he discovers humans actually eat honey, and subsequently decides to sue them.', 'Jerry Seinfeld, Renée Zellweger, Matthew Broderick, Patrick Warburton', 'https://m.media-amazon.com/images/M/MV5BMjE1MDYxOTA4MF5BMl5BanBnXkFtZTcwMDE0MDUzMw@@._V1_SX300.jpg', 'Comedy')
+,('Catch Me If You Can','tt0264464','PG-13', 141,'A seasoned FBI agent pursues Frank Abagnale Jr. who, before his 19th birthday, successfully forged millions of dollars worth of checks while posing as a Pan Am pilot, a doctor, and a legal prosecutor.','Leonardo DiCaprio, Tom Hanks, Christopher Walken, Martin Sheen','https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg', 'Genre')
 
 insert into Theaters
 (TheaterName)
