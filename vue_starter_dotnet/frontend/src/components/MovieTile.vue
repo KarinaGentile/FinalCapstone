@@ -17,7 +17,18 @@ import Showings from "../components/Showings";
 
 export default {
   data() {
-    return {};
+    return {
+      showings:
+      [
+        {
+          showingsId: 0,
+          startTime: "",
+          endTime: "",
+          movieId: 0,
+          theaterId: 0
+        }
+      ]
+    };
   },
   props: {
     mId: Number,
@@ -32,6 +43,24 @@ export default {
   },
   components: {
     Showings
+  },
+  created() {
+    let url = process.env.VUE_APP_REMOTE_API;
+    url += `/api/showings/${this.mId}`;
+    console.log("Generated url: " + url);
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          console.log("Response status: " + response.status);
+          console.log("Response status text: " + response.statusText);
+          throw new Error("Netw. response not ok");
+        }
+        return response.json();
+      })
+      .then(json => {
+        console.table(json);
+        this.showings = json;
+      });
   }
 };
 </script>
