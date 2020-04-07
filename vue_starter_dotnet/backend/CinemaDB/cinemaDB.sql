@@ -93,7 +93,7 @@ insert into Movies
 values
 ('Forrest Gump','tt0109830','PG-13', 142,'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.','Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys','https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg', 'Comedy-Drama')
 ,('Bee Movie','tt0389790','PG', 124,'Barry B. Benson, a bee just graduated from college, is disillusioned at his lone career choice: making honey. On a special trip outside the hive, Barrys life is saved by Vanessa, a florist in New York City. As their relationship blossoms, he discovers humans actually eat honey, and subsequently decides to sue them.', 'Jerry Seinfeld, Renée Zellweger, Matthew Broderick, Patrick Warburton', 'https://m.media-amazon.com/images/M/MV5BMjE1MDYxOTA4MF5BMl5BanBnXkFtZTcwMDE0MDUzMw@@._V1_SX300.jpg', 'Comedy')
-,('Catch Me If You Can','tt0264464','PG-13', 141,'A seasoned FBI agent pursues Frank Abagnale Jr. who, before his 19th birthday, successfully forged millions of dollars worth of checks while posing as a Pan Am pilot, a doctor, and a legal prosecutor.','Leonardo DiCaprio, Tom Hanks, Christopher Walken, Martin Sheen','https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg', 'Genre')
+,('Catch Me If You Can','tt0264464','PG-13', 141,'A seasoned FBI agent pursues Frank Abagnale Jr. who, before his 19th birthday, successfully forged millions of dollars worth of checks while posing as a Pan Am pilot, a doctor, and a legal prosecutor.','Leonardo DiCaprio, Tom Hanks, Christopher Walken, Martin Sheen','https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg', 'Crime')
 
 insert into Theaters
 (TheaterName)
@@ -106,16 +106,77 @@ values
 ,('6')
 ,('7')
 
+DECLARE @todaysDate datetime = CONVERT(date, getdate());
+DECLARE @allStart datetime = (DATEADD(hour, 10, @todaysDate));
+
 insert into Showings
 (MovieId, StartTime, EndTime, TheaterId)
 values
-(1, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),GETDATE())), 1)
-,(2, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),GETDATE())),  2)
-,(3, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),GETDATE())),  3)
-,(1, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),GETDATE())),  4)
-,(2, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),GETDATE())),  5)
-,(3, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),GETDATE())),  6)
-,(3, GETDATE(), (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),GETDATE())),  7)
+(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
+,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+
+SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+
+insert into Showings
+(MovieId, StartTime, EndTime, TheaterId)
+values
+(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
+,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+
+SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+
+insert into Showings
+(MovieId, StartTime, EndTime, TheaterId)
+values
+(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
+,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+
+SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+
+insert into Showings
+(MovieId, StartTime, EndTime, TheaterId)
+values
+(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
+,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+
+SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+
+
+insert into Showings
+(MovieId, StartTime, EndTime, TheaterId)
+values
+(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
+,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+
+SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+
 
 commit tran
 
+
+select * from Showings order by EndTime desc
