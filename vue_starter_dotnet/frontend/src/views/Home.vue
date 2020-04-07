@@ -12,6 +12,7 @@
         v-bind:mPlot="m.plot"
         v-bind:mCast="m.cast"
         v-bind:mGenre="m.genre"
+        v-bind:mId="m.id"
       />
 
       <p></p>

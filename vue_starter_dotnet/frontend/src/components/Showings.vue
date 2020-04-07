@@ -14,19 +14,28 @@ do we need another api call here?
 export default {
   data() {
     return {
-      showings: [
-        {
-          id: 1,
-          startTime: "10:00AM",
-          endTime: "12:10PM"
-        },
-        {
-          id: 2,
-          startTime: "10:15AM",
-          endTime: "12:00PM"
-        }
-      ]
+      // showings: [
+      //   {
+      //     id: 1,
+      //     startTime: "10:00AM",
+      //     endTime: "12:10PM"
+      //   },
+      //   {
+      //     id: 2,
+      //     startTime: "10:15AM",
+      //     endTime: "12:00PM"
+      //   }
+      // ]
     };
+  },
+  props:
+  {
+    showings: Array,
+    // sShowingId: Number,
+    // sStartTime: Date,
+    // sEndTime: Date,
+    // sMovieId: Number,
+    // sTheaterId: Number
   }
 };
 </script>

@@ -7,7 +7,8 @@
       <p>{{mPlot}}</p>
       <p></p>
       <p></p>
-      <Showings></Showings>
+      <Showings
+      v-bind:showings="this.showings"></Showings>
     </div>
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
       showings:
       [
         {
-          showingsId: 0,
+          showingId: 0,
           startTime: "",
           endTime: "",
           movieId: 0,
