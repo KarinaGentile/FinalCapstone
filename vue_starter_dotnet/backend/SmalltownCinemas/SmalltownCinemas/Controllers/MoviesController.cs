@@ -13,12 +13,12 @@ namespace SmalltownCinemas.Controllers
     public class MoviesController : ControllerBase
     {
         private IMovieDAO movieDAO;
-        private IShowingDAO showingDAO;
 
-        public MoviesController(IMovieDAO movieDAO, IShowingDAO showingDAO)
+
+        public MoviesController(IMovieDAO movieDAO)
         {
             this.movieDAO = movieDAO;
-            this.showingDAO = showingDAO;
+            
         }
 
         [HttpGet]
@@ -27,10 +27,6 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(movieDAO.GetAllMovies());
         }
 
-        [HttpGet("/showings")]
-        public IActionResult GetAllShowings()
-        {
-            return new JsonResult(showingDAO.GetAllShowings());
-        }
+
     }
 }

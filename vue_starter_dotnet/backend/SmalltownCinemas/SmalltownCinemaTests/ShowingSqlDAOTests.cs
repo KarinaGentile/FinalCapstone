@@ -19,5 +19,13 @@ namespace SmalltownCinemaTests
             int actual = showings.Count;
             Assert.IsTrue(actual > 0);
         }
+
+        [TestMethod]
+        public void GetShowingsByMovieId()
+        {
+            IList<Showing> showings = showingDAO.GetShowingsByMovieId(1);
+            int actual = showings.Count;
+            Assert.IsTrue(actual > 0);
+        }
     }
 }
