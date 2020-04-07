@@ -27,7 +27,7 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(movieDAO.GetAllMovies());
         }
 
-        [HttpGet("/showings")]
+        [HttpGet("showings")]
         public IActionResult GetAllShowings()
         {
             return new JsonResult(showingDAO.GetAllShowings());
