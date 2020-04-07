@@ -15,13 +15,14 @@ namespace SmalltownCinemas.Models
 
         }
 
-        public Movie(int movieId,string title, string rating, string plot, string cast, int runtime, string imdbId, string posterURL)
+        public Movie(int movieId,string title, string rating, string plot, string cast, int runtime, string imdbId, string posterURL, string genre)
         {
             this.Title = title;
             this.Rating = rating;
             this.Plot = plot;
             this.RuntimeInMinutes = runtime;
             this.IMDBId = imdbId;
+            this.Genre = genre;
             string[] actors = cast.Split(',');
             List<string> cst = new List<string>();
             foreach (string a in actors)
@@ -72,6 +73,8 @@ namespace SmalltownCinemas.Models
         /// The URL of the poster image
         /// </summary>
         public string PosterURL { get; private set; }
+
+        public string Genre { get; private set; }
 
     }
 }
