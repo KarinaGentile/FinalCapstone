@@ -1,13 +1,17 @@
 <template>
   <div class="home">
     <section class="centeredPanel">
-    <h1>Now Playing:</h1>
-    <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    </ul>
-    <p></p>
+      <h1>Now Playing:</h1>
+
+      <movie-tile
+        v-for="m in movies"
+        v-bind:key="m.id"
+        v-bind:mTitle="m.title"
+        v-bind:mPosterURL="m.posterURL"
+        v-bind:mRating="m.rating"
+      />
+
+      <p></p>
     </section>
   </div>
 </template>
@@ -17,6 +21,47 @@
 
 
 <script>
+import MovieTile from "../components/MovieTile";
+
+export default {
+  name: "home",
+  components: {
+    MovieTile
+  },
+  data() {
+    return {
+      movies: [
+        {
+          id: 0,
+          title: "",
+          rating: "",
+          plot: "",
+          runtime: 0,
+          cast: "",
+          posterURL: ""
+        }
+      ]
+    };
+  },
+  created() {
+    let url = process.env.VUE_APP_REMOTE_API;
+    url += "/api/movies";
+    console.log("Generated url: " + url);
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          console.log("Response status: " + response.status);
+          console.log("Response status text: " + response.statusText);
+          throw new Error("Netw. response not ok");
+        }
+        return response.json();
+      })
+      .then(json => {
+        console.table(json);
+        this.movies = json;
+      });
+  }
+};
 // export default {
 //   name: 'home',
 //     components: {
@@ -69,12 +114,12 @@ header {
   margin: 0;
   flex: 1;
   list-style-type: none;
-  float:left;
+  float: left;
 }
 .nav li {
   /* display: inline-block; */
   padding-right: 20px;
-   float:left;
+  float: left;
 }
 .nav li a,
 .nav li a:visited {
@@ -94,24 +139,24 @@ header {
   padding: 20px;
 }
 ul {
-list-style-type: none;
+  list-style-type: none;
 }
 section.centeredPanel {
-    clear: both;
-    display: block;
-    width: 100%;
-    /* vertical-align: top; */
-    min-height: 450px;
-    min-width: 500px;
-    background-color: rgb(100, 90, 90);
-    border-radius: 7px;
-    margin: 20px auto;
-    padding-top: 0.5px;
-    padding-bottom: 50px;
-    padding-right: 20px;
-    padding-left: 20px;
-    align-content: center;
-    text-align: center;
+  clear: both;
+  display: block;
+  width: 100%;
+  /* vertical-align: top; */
+  min-height: 450px;
+  min-width: 500px;
+  background-color: rgb(100, 90, 90);
+  border-radius: 7px;
+  margin: 20px auto;
+  padding-top: 0.5px;
+  padding-bottom: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
+  align-content: center;
+  text-align: center;
 }
 h1 {
   font-weight: bold;
