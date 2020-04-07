@@ -31,5 +31,13 @@ namespace SmalltownCinemas.Controllers
 
             return new JsonResult(showingDAO.GetShowingsByMovieId(movieId));
         }
+<<<<<<< HEAD
     }
 }
+=======
+
+
+
+    }
+}
+>>>>>>> b39f54f9f8d8b08e0f7aa6d039864f3dfd24ee2f

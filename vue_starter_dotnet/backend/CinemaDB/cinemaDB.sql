@@ -179,4 +179,4 @@ SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
 commit tran
 
 
-select * from Showings order by EndTime desc
+select count(*) from Showings
