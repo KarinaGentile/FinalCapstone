@@ -3,7 +3,7 @@
     <img class="poster" v-bind:src="mPosterURL" />
     <div id="descriptionBox">
       <h3>{{mTitle}} --- {{mRating}}</h3>
-      <p>Lorem ipsum</p>
+      <p>{{mPlot}}</p>
     </div>
   </div>
 </template>

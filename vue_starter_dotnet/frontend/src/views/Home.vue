@@ -9,6 +9,7 @@
         v-bind:mTitle="m.title"
         v-bind:mPosterURL="m.posterURL"
         v-bind:mRating="m.rating"
+        v-bind:mPlot="m.plot"
       />
 
       <p></p>
@@ -78,6 +79,10 @@ body {
   align-items: center;
   background-color: darkred;
   background-image: url("../../src/backgroundimg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: cover;
   font-family: "Helvetica", sans-serif;
 }
 /* #app {
@@ -129,7 +134,7 @@ section.centeredPanel {
   display: block;
   width: 100%;
   min-height: 450px;
-  min-width: 500px;
+  max-width: 750px;
   background-color: rgb(100, 90, 90);
   border-radius: 7px;
   margin: 20px auto;
