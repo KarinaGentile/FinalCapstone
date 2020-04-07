@@ -12,3 +12,5 @@
   </div>    
 </template>
 
+<!--After I click on a movie title or poster, I land on this page 
+ -->
