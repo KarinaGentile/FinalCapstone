@@ -62,25 +62,8 @@ export default {
       });
   }
 };
-// export default {
-//   name: 'home',
-//     components: {
-//     Movie
-//   },
-// };
-//  data() {
-//   return {
-//    movie: {
-//      title: "",
-//      poster: ,
-//       rated: "",
-//      cast: "",
-//      plot: ""
-// //     }
-//   };
-// }
 </script>
-<!--figure out layout for the list -->
+
 
 
 <style>
@@ -145,7 +128,6 @@ section.centeredPanel {
   clear: both;
   display: block;
   width: 100%;
-  /* vertical-align: top; */
   min-height: 450px;
   min-width: 500px;
   background-color: rgb(100, 90, 90);
