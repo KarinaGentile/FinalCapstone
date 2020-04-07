@@ -5,14 +5,14 @@
 
       <movie-tile
         v-for="m in movies"
-        v-bind:key="m.id"
+        v-bind:key="m.movieId"
         v-bind:mTitle="m.title"
         v-bind:mPosterURL="m.posterURL"
         v-bind:mRating="m.rating"
         v-bind:mPlot="m.plot"
         v-bind:mCast="m.cast"
         v-bind:mGenre="m.genre"
-        v-bind:mId="m.id"
+        v-bind:mId="m.movieId"
       />
 
       <p></p>

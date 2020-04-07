@@ -46,8 +46,10 @@ export default {
     Showings
   },
   created() {
+    console.log(this.mId)
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/showings/${this.mId}`;
+    // url += `/api/showings/2`;
     console.log("Generated url: " + url);
     fetch(url)
       .then(response => {
@@ -59,7 +61,7 @@ export default {
         return response.json();
       })
       .then(json => {
-        console.table(json);
+        // console.table(json);
         this.showings = json;
       });
   }
