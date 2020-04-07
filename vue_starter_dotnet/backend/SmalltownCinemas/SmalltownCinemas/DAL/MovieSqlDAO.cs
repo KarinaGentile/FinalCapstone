@@ -52,7 +52,8 @@ namespace SmalltownCinemas.DAL
                 Convert.ToString(rdr["cast"]), 
                 Convert.ToInt32(rdr["runtime"]), 
                 Convert.ToString(rdr["imdbid"]),
-                Convert.ToString(rdr["posterurl"])
+                Convert.ToString(rdr["posterurl"]),
+                Convert.ToString(rdr["genre"])
                 );
             
             return movie;
