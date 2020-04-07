@@ -7,7 +7,7 @@
       <p>{{mPlot}}</p>
       <p></p>
       <p></p>
-      <footer>[ShowTime1]   [Showtime2]   [Showtime3]</footer>
+      <Showings></Showings>
     </div>
   </div>
 </template>
@@ -30,7 +30,9 @@ export default {
     mIMDBId: String,
     mGenre: String
   },
-      Showings,
+  components: {
+    Showings
+  }
 };
 </script>
 
