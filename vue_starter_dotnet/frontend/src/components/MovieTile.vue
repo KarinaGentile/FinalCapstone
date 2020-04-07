@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import Showings from "../components/Showings";
+
 export default {
   data() {
     return {};
@@ -27,7 +29,8 @@ export default {
     mPosterURL: String,
     mIMDBId: String,
     mGenre: String
-  }
+  },
+      Showings,
 };
 </script>
 

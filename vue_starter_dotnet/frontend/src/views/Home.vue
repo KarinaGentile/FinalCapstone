@@ -25,6 +25,7 @@
 
 <script>
 import MovieTile from "../components/MovieTile";
+import Showings from "../components/Showings";
 
 export default {
   name: "home",
@@ -44,7 +45,8 @@ export default {
           posterURL: "",
           genre: ""
         }
-      ]
+      ],
+      Showings
     };
   },
   created() {
