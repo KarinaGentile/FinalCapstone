@@ -2,7 +2,8 @@
   <div id="movieTile">
     <img class="poster" v-bind:src="mPosterURL" />
     <div id="descriptionBox">
-      <h3>{{mTitle}} --- {{mRating}}</h3>
+      <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
+      <p>Starring: {{mCast}}</p>
       <p>{{mPlot}}</p>
     </div>
   </div>
@@ -21,7 +22,8 @@ export default {
     mCast: String,
     mRuntime: Number,
     mPosterURL: String,
-    mIMDBId: String
+    mIMDBId: String,
+    mGenre: String
   }
 };
 </script>

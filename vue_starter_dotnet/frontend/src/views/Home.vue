@@ -10,6 +10,8 @@
         v-bind:mPosterURL="m.posterURL"
         v-bind:mRating="m.rating"
         v-bind:mPlot="m.plot"
+        v-bind:mCast="m.cast"
+        v-bind:mGenre="m.genre"
       />
 
       <p></p>
@@ -39,7 +41,8 @@ export default {
           plot: "",
           runtime: 0,
           cast: "",
-          posterURL: ""
+          posterURL: "",
+          genre: ""
         }
       ]
     };
