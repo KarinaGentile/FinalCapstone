@@ -1,5 +1,6 @@
 <template>
   <div id="login" class="text-center">
+    <section class="centeredPanel">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -30,6 +31,7 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
+    </section>
   </div>
 </template>
 
@@ -81,5 +83,7 @@ export default {
 </script>
 
 <style>
-
+body {
+  background-image: url("../../src/backgroundimg.jpg");
+}
 </style>

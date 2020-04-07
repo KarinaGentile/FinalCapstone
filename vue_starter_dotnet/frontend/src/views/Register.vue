@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <section class="centeredPanel">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -39,6 +40,7 @@
         Create Account
       </button>
     </form>
+    </section>
   </div>
 </template>
 
@@ -81,4 +83,7 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url("../../src/backgroundimg.jpg");
+}
 </style>
