@@ -18,5 +18,15 @@ namespace SmalltownCinemaTests
             int actual = movies.Count;
             Assert.AreEqual(3, actual);
         }
+
+        [TestMethod]
+        public void GetMovieByIdTest()
+        {
+            int id = 1;
+            Movie movie = movieDAO.GetMovieById(id);
+            Assert.IsNotNull(movie);
+        }
     }
+
+    
 }

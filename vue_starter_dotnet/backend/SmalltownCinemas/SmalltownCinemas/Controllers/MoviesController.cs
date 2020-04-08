@@ -21,15 +21,18 @@ namespace SmalltownCinemas.Controllers
 
         }
 
-        
+
         [HttpGet]
         public IActionResult GetAllMovies()
         {
             return new JsonResult(movieDAO.GetAllMovies());
         }
 
-
-        
+        [HttpGet("{id}")]
+        public IActionResult GetMovieById(int id)
+        {
+            return new JsonResult(movieDAO.GetMovieById(id));
+        }
 
     }
 }

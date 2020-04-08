@@ -61,7 +61,7 @@ namespace SmalltownCinemas.DAL
 
         public Movie GetMovieById(int id)
         {
-            IList<Movie> movies = new List<Movie>();
+            Movie movie = new Movie();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -72,9 +72,9 @@ namespace SmalltownCinemas.DAL
                     cmd.Parameters.AddWithValue("@id", id);
                     SqlDataReader rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read())
+                    if (rdr.Read())
                     {
-                        movies.Add(RowToMovie(rdr));
+                        movie = RowToMovie(rdr);
                     }
                 }
             }
@@ -83,7 +83,7 @@ namespace SmalltownCinemas.DAL
 
                 throw;
             }
-            return movies;
+            return movie;
         }
 
 
