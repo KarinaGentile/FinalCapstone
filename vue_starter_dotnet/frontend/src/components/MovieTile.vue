@@ -5,10 +5,10 @@
       <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"><h3>{{mTitle}}</h3></router-link>
       <h3>{{mRating}} ({{mGenre}})</h3>
       <!-- <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3> -->
-      <p>Starring: {{mCast}}</p>
+      <p class="bold">Starring: {{mCast}}</p>
       <p>{{mPlot}}</p>
       <p></p>
-      <p></p>
+      <p class="bold">Today's Showtimes:</p>
       <Showings
       v-bind:showings="this.showings"></Showings>
     </div>
@@ -90,15 +90,12 @@ export default {
   margin-right: 10px;
 }
 
-/* h3 {
-  text-decoration: none;
-}
-router-link{
-  text-decoration: none;
-} */
 a:hover, a:link, a:active
 {
     text-decoration: none;
+}
+.bold {
+  font-weight: bold;
 }
 
 </style>
