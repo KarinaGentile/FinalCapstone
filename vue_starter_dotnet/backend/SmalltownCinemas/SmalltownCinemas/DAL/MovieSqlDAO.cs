@@ -61,7 +61,29 @@ namespace SmalltownCinemas.DAL
 
         public Movie GetMovieById(int id)
         {
-            throw new NotImplementedException();
+            IList<Movie> movies = new List<Movie>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT * FROM MOVIES WHERE MovieId = @id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        movies.Add(RowToMovie(rdr));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return movies;
         }
 
 
