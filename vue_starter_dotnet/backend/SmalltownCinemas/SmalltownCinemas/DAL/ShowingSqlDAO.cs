@@ -50,6 +50,7 @@ namespace SmalltownCinemas.DAL
             showing.MovieId = Convert.ToInt32(rdr["MovieId"]);
             showing.TheaterId = Convert.ToInt32(rdr["TheaterId"]);
             showing.StartTime = Convert.ToDateTime(rdr["StartTime"]);
+            showing.StartTimeFormatted = showing.StartTime.ToShortTimeString();
             showing.EndTime = Convert.ToDateTime(rdr["EndTime"]);
             //showing.ShowingId = Convert.ToInt32(rdr["ShowingId"]);
             return showing;

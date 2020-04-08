@@ -6,7 +6,7 @@ do we need another api call here?
 
 <template>
   <div class="Showings">
-    <button v-for="s in showings" v-bind:key="s.id">{{s.startTime}}</button>
+    <button v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}</button>
   </div>
 </template>
 
