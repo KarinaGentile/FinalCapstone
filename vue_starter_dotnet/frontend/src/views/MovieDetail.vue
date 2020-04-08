@@ -1,12 +1,12 @@
 <template>
   <div id="movie">
-    <section class="centeredPanel">
-      <h3>{{mTitle}}</h3>
-      <img class="poster" v-bind:src="mPoster" />
+    <section v-if="this.displayKey > 0" v-bind:key="this.displayKey" class="centeredPanel">
+      <h3>{{this.movie.Title}}</h3>
+      <img class="poster" v-bind:src="this.movie.Poster" />
       <div id="movieBox">
-        <h3>{{mRated}} ({{mGenre}})</h3>
-        <p>Starring: {{mActors}}</p>
-        <p>{{mPlot}}</p>
+        <h3>{{this.movie.Rated}} ({{this.movie.Genre}})</h3>
+        <p>Starring: {{this.movie.Actors}}</p>
+        <p>{{this.movie.Plot}}</p>
         <p></p>
         <p></p>
         <!-- <Showings v-bind:showings="this.showings"></Showings> -->
@@ -19,14 +19,23 @@
 export default {
   data() {
     return {
-      movie: null,
+      displayKey: 0,
+      movie: {
+        movieId: 0,
+        Title: "",
+        Poster: "",
+        Rated: "",
+        Genre: "",
+        Actors: "",
+        Plot: ""
+      },
       mID: 0,
       movies: []
     };
   },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
-    url += `/api/movies/${this.$route.param.id}`;
+    url += `/api/movies/${this.$route.params.id}`;
     console.log("Generated url: " + url);
     fetch(url)
       .then(response => {
@@ -40,6 +49,8 @@ export default {
       .then(json => {
         console.table(json);
         this.movie = json;
+        this.displayKey += 1;
+        console.log("display key updated, should refresh");
       });
 
     console.log(this.movie);
