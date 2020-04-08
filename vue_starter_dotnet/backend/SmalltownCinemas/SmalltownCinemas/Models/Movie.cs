@@ -20,16 +20,16 @@ namespace SmalltownCinemas.Models
             this.Title = title;
             this.Rating = rating;
             this.Plot = plot;
-            this.RuntimeInMinutes = runtime;
+            this.RuntimeInMinutes = $"{runtime}";
             this.IMDBId = imdbId;
             this.Genre = genre;
-            string[] actors = cast.Split(',');
-            List<string> cst = new List<string>();
-            foreach (string a in actors)
-            {
-                cst.Add(a.Trim());
-            }
-            this.Cast = cst;
+            //string[] actors = cast.Split(',');
+            //List<string> cst = new List<string>();
+            //foreach (string a in actors)
+            //{
+            //    cst.Add(a.Trim());
+            //}
+            this.Cast = cast;
             this.MovieId = movieId;
             this.PosterURL = posterURL;
         }
@@ -37,44 +37,44 @@ namespace SmalltownCinemas.Models
         /// <summary>
         /// The id of the movie in the SQL database
         /// </summary>
-        public int MovieId { get; private set; }
+        public int MovieId { get; set; }
 
         /// <summary>
         /// The title of the movie
         /// </summary>
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// The movie's MPAA rating
         /// </summary>
-        public string Rating { get; private set; }
+        public string Rating { get; set; }
 
         /// <summary>
         /// A summary of the movie's plot
         /// </summary>
-        public string Plot { get; private set; }
+        public string Plot { get; set; }
 
         /// <summary>
         /// A list containing the names of the top-billed actors/actresses
         /// </summary>
-        public List<string> Cast { get; private set; }
+        public string Cast { get; set; }
 
         /// <summary>
         /// The movie's runtime in minutes
         /// </summary>
-        public int RuntimeInMinutes { get; private set; }
+        public string RuntimeInMinutes { get; set; }
 
         /// <summary>
         /// The IMDB id of the movie
         /// </summary>
-        public string IMDBId { get; private set; }
+        public string IMDBId { get; set; }
 
         /// <summary>
         /// The URL of the poster image
         /// </summary>
-        public string PosterURL { get; private set; }
+        public string PosterURL { get; set; }
 
-        public string Genre { get; private set; }
+        public string Genre { get; set; }
 
     }
 }
