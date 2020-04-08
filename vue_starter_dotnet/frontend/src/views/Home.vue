@@ -13,6 +13,7 @@
         v-bind:mActors="m.actors"
         v-bind:mGenre="m.genre"
         v-bind:mId="m.movieId"
+        :isDetailPage="false"
       />
 
       <p></p>

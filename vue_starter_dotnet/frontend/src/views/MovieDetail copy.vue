@@ -1,7 +1,7 @@
 <template>
   <div id="movie">
-    <section class="centeredPanel">
-      <!-- <h3>{{this.movie.Title}}</h3>
+    <section v-if="this.displayKey > 0" v-bind:key="this.displayKey" class="centeredPanel">
+      <h3>{{this.movie.Title}}</h3>
       <img class="poster" v-bind:src="this.movie.Poster" />
       <div id="movieBox">
         <h3>{{this.movie.Rated}} ({{this.movie.Genre}})</h3>
@@ -9,27 +9,13 @@
         <p>{{this.movie.Plot}}</p>
         <p></p>
         <p></p>
-         <Showings v-bind:showings="this.showings"></Showings>
-      </div> -->
-      <movie-tile
-        v-if="this.movie.movieId > 0"
-        v-bind:key="this.movie.movieId"
-        v-bind:mTitle="this.movie.title"
-        v-bind:mPoster="this.movie.poster"
-        v-bind:mRated="this.movie.rated"
-        v-bind:mPlot="this.movie.plot"
-        v-bind:mActors="this.movie.actors"
-        v-bind:mGenre="this.movie.genre"
-        v-bind:mId="this.movie.movieId"
-        :isDetailPage="true"
-      />
-
+        <!-- <Showings v-bind:showings="this.showings"></Showings> -->
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-import MovieTile from "../components/MovieTile";
 export default {
   data() {
     return {
@@ -46,9 +32,6 @@ export default {
       mID: 0,
       movies: []
     };
-  },
-  components: {
-    MovieTile
   },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;

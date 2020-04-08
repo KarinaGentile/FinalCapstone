@@ -8,7 +8,8 @@
       <p class="bold">Starring: {{mActors}}</p>
       <p>{{mPlot}}</p>
       <p></p>
-      <p class="bold">Today's Showtimes:</p>
+      <p v-if="isDetailPage === true" class="bold">Showtimes:</p>
+      <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
       <Showings
       v-bind:showings="this.showings"></Showings>
     </div>
@@ -42,7 +43,8 @@ export default {
     mRuntime: Number,
     mPoster: String,
     mIMDBId: String,
-    mGenre: String
+    mGenre: String,
+    isDetailPage: Boolean
   },
   components: {
     Showings
