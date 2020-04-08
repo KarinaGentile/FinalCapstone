@@ -1,16 +1,7 @@
 <template>
   <div id="movie">
     <section class="centeredPanel">
-      <!-- <h3>{{this.movie.Title}}</h3>
-      <img class="poster" v-bind:src="this.movie.Poster" />
       <div id="movieBox">
-        <h3>{{this.movie.Rated}} ({{this.movie.Genre}})</h3>
-        <p>Starring: {{this.movie.Actors}}</p>
-        <p>{{this.movie.Plot}}</p>
-        <p></p>
-        <p></p>
-         <Showings v-bind:showings="this.showings"></Showings>
-      </div> -->
       <movie-tile
         v-if="this.movie.movieId > 0"
         v-bind:key="this.movie.movieId"
@@ -23,7 +14,7 @@
         v-bind:mId="this.movie.movieId"
         :isDetailPage="true"
       />
-
+      </div>
     </section>
   </div>
 </template>
@@ -76,6 +67,9 @@ export default {
 </script>
 
 <style>
+#movieBox {
+  padding-top: 50px;
+}
 </style>
 
 <!--After I click on a movie title or poster, I land on this page
