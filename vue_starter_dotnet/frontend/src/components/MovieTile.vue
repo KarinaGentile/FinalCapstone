@@ -1,6 +1,6 @@
 <template>
   <div id="movieTile">
-    <router-link v-bind:to="{name:'movie-detail', params:{id:2}}"> <img class="poster" v-bind:src="mPosterURL"/></router-link>
+    <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"> <img class="poster" v-bind:src="mPosterURL"/></router-link>
     <div id="descriptionBox">
       <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
       <p>Starring: {{mCast}}</p>
