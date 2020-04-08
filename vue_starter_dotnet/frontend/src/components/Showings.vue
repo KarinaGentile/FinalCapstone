@@ -46,4 +46,8 @@ export default {
   /* background-color: darkslategrey; */
 }
 
+button {
+  background-color: rgb(194, 180, 180);
+}
+
 </style>
