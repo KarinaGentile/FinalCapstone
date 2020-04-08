@@ -24,9 +24,10 @@ namespace SmalltownCinemas.DAL
                 {
                     conn.Open();
 
-                    string sql = "SELECT * FROM SHOWINGS";
+                    string sql = "SELECT * FROM SHOWINGS WHERE starttime > @currentTime";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@currentTime", DateTime.Now);
                     SqlDataReader rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
@@ -66,10 +67,11 @@ namespace SmalltownCinemas.DAL
                 {
                     conn.Open();
 
-                    string sql = "select * from Showings where MovieId = @id";
+                    string sql = "select * from Showings where MovieId = @id and starttime > @currentTime";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", movieId);
+                    cmd.Parameters.AddWithValue("@currentTime", DateTime.Now);
                     SqlDataReader rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
