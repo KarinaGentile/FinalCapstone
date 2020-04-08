@@ -1,5 +1,5 @@
 <template>
-  <div id="movieTile">
+  <div id="movie">
     <img class="poster" v-bind:src="mPosterURL" />
     <div id="descriptionBox">
       <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>

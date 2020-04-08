@@ -1,6 +1,6 @@
 <template>
   <div id="movieTile">
-    <img class="poster" v-bind:src="mPosterURL" />
+    <img class="poster" v-bind:src="mPosterURL"/>
     <div id="descriptionBox">
       <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
       <p>Starring: {{mCast}}</p>
@@ -12,7 +12,7 @@
     </div>
   </div>
 </template>
-
+<!--router-link to="/movies/:id" -->
 <script>
 import Showings from "../components/Showings";
 
