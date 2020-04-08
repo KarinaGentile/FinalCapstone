@@ -7,7 +7,8 @@
       <p>{{mPlot}}</p>
       <p></p>
       <p></p>
-      <footer>[ShowTime1]   [Showtime2]   [Showtime3]</footer>
+      <Showings
+      v-bind:showings="this.showings"></Showings>
     </div>
   </div>    
 </template>

@@ -43,5 +43,7 @@ export default {
 <style>
 .Showings {
   display: flexbox;
+  /* background-color: darkslategrey; */
 }
+
 </style>

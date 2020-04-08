@@ -87,4 +87,5 @@ export default {
 .poster {
   margin-right: 10px;
 }
+
 </style>

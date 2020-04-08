@@ -124,5 +124,7 @@ section.centeredPanel {
 h1 {
   font-weight: bold;
 }
+
+
 </style>
 
