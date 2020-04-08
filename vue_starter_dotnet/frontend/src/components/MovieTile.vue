@@ -2,7 +2,9 @@
   <div id="movieTile">
     <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"> <img class="poster" v-bind:src="mPosterURL"/></router-link>
     <div id="descriptionBox">
-      <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
+      <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"><h3>{{mTitle}}</h3></router-link>
+      <h3>{{mRating}} ({{mGenre}})</h3>
+      <!-- <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3> -->
       <p>Starring: {{mCast}}</p>
       <p>{{mPlot}}</p>
       <p></p>
@@ -86,6 +88,17 @@ export default {
 
 .poster {
   margin-right: 10px;
+}
+
+/* h3 {
+  text-decoration: none;
+}
+router-link{
+  text-decoration: none;
+} */
+a:hover, a:link, a:active
+{
+    text-decoration: none;
 }
 
 </style>
