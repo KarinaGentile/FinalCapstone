@@ -18,10 +18,10 @@ namespace SmalltownCinemas.Models
         public Movie(int movieId,string title, string rating, string plot, string cast, int runtime, string imdbId, string posterURL, string genre)
         {
             this.Title = title;
-            this.Rating = rating;
+            this.Rated = rating;
             this.Plot = plot;
-            this.RuntimeInMinutes = $"{runtime}";
-            this.IMDBId = imdbId;
+            this.Runtime = $"{runtime}";
+            this.imdbID = imdbId;
             this.Genre = genre;
             //string[] actors = cast.Split(',');
             //List<string> cst = new List<string>();
@@ -29,9 +29,9 @@ namespace SmalltownCinemas.Models
             //{
             //    cst.Add(a.Trim());
             //}
-            this.Cast = cast;
+            this.Actors = cast;
             this.MovieId = movieId;
-            this.PosterURL = posterURL;
+            this.Poster = posterURL;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace SmalltownCinemas.Models
         /// <summary>
         /// The movie's MPAA rating
         /// </summary>
-        public string Rating { get; set; }
+        public string Rated { get; set; }
 
         /// <summary>
         /// A summary of the movie's plot
@@ -57,22 +57,22 @@ namespace SmalltownCinemas.Models
         /// <summary>
         /// A list containing the names of the top-billed actors/actresses
         /// </summary>
-        public string Cast { get; set; }
+        public string Actors { get; set; }
 
         /// <summary>
         /// The movie's runtime in minutes
         /// </summary>
-        public string RuntimeInMinutes { get; set; }
+        public string Runtime { get; set; }
 
         /// <summary>
         /// The IMDB id of the movie
         /// </summary>
-        public string IMDBId { get; set; }
+        public string imdbID { get; set; }
 
         /// <summary>
         /// The URL of the poster image
         /// </summary>
-        public string PosterURL { get; set; }
+        public string Poster { get; set; }
 
         public string Genre { get; set; }
 
