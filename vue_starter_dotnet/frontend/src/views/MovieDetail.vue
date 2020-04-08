@@ -2,10 +2,10 @@
   <div id="movie">
     <section class="centeredPanel">
       <h3>{{mTitle}}</h3>
-      <img class="poster" v-bind:src="mPosterURL" />
+      <img class="poster" v-bind:src="mPoster" />
       <div id="movieBox">
-        <h3>{{mRating}} ({{mGenre}})</h3>
-        <p>Starring: {{mCast}}</p>
+        <h3>{{mRated}} ({{mGenre}})</h3>
+        <p>Starring: {{mActors}}</p>
         <p>{{mPlot}}</p>
         <p></p>
         <p></p>
@@ -26,7 +26,7 @@ export default {
   },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
-    url += "/api/movies";
+    url += `/api/movies/${this.$route.param.id}`;
     console.log("Generated url: " + url);
     fetch(url)
       .then(response => {
@@ -39,12 +39,9 @@ export default {
       })
       .then(json => {
         console.table(json);
-        this.movies = json;
+        this.movie = json;
       });
-    this.mID = this.$route.params.id;
-    this.movie = this.movies.find(m => {
-      m.movieID == this.mID;
-    });
+
     console.log(this.movie);
   }
 };

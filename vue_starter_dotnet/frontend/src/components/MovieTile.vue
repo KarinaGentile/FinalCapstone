@@ -1,11 +1,11 @@
 <template>
   <div id="movieTile">
-    <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"> <img class="poster" v-bind:src="mPosterURL"/></router-link>
+    <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"> <img class="poster" v-bind:src="mPoster"/></router-link>
     <div id="descriptionBox">
       <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"><h3>{{mTitle}}</h3></router-link>
-      <h3>{{mRating}} ({{mGenre}})</h3>
+      <h3>{{mRated}} ({{mGenre}})</h3>
       <!-- <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3> -->
-      <p class="bold">Starring: {{mCast}}</p>
+      <p class="bold">Starring: {{mActors}}</p>
       <p>{{mPlot}}</p>
       <p></p>
       <p class="bold">Today's Showtimes:</p>
@@ -36,11 +36,11 @@ export default {
   props: {
     mId: Number,
     mTitle: String,
-    mRating: String,
+    mRated: String,
     mPlot: String,
-    mCast: String,
+    mActors: String,
     mRuntime: Number,
-    mPosterURL: String,
+    mPoster: String,
     mIMDBId: String,
     mGenre: String
   },

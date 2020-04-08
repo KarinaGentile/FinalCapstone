@@ -7,10 +7,10 @@
         v-for="m in movies"
         v-bind:key="m.movieId"
         v-bind:mTitle="m.title"
-        v-bind:mPosterURL="m.posterURL"
-        v-bind:mRating="m.rating"
+        v-bind:mPoster="m.poster"
+        v-bind:mRated="m.rated"
         v-bind:mPlot="m.plot"
-        v-bind:mCast="m.cast"
+        v-bind:mActors="m.actors"
         v-bind:mGenre="m.genre"
         v-bind:mId="m.movieId"
       />
@@ -39,11 +39,11 @@ export default {
         {
           id: 0,
           title: "",
-          rating: "",
+          rated: "",
           plot: "",
           runtime: 0,
-          cast: "",
-          posterURL: "",
+          actors: "",
+          poster: "",
           genre: ""
         }
       ],
