@@ -1,5 +1,6 @@
 <template>
   <div id="movie">
+    <h3>You are here</h3>
     <img class="poster" v-bind:src="mPosterURL" />
     <div id="descriptionBox">
       <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
@@ -12,6 +13,16 @@
     </div>
   </div>    
 </template>
+
+<script>
+export default {
+  
+}
+</script>
+
+<style>
+
+</style>
 
 <!--After I click on a movie title or poster, I land on this page
 Should only display one movie & list of showings for next 7 days 

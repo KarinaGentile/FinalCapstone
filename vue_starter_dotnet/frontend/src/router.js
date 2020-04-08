@@ -46,7 +46,7 @@ const router = new Router({
     },
     {
       path: "/movies/:id",
-      name: "moviedetail",
+      name: "movie-detail",
       component: MovieDetail,
       meta: {
         requiresAuth: false
