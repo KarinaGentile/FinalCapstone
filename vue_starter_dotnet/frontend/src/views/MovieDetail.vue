@@ -1,15 +1,15 @@
 <template>
   <div id="movie">
     <section class="centeredPanel">
-      <h3>Your movie id is {{mID}}</h3>
+      <h3>{{mTitle}}</h3>
       <img class="poster" v-bind:src="mPosterURL" />
-      <div id="descriptionBox">
-        <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3>
+      <div id="movieBox">
+        <h3>{{mRating}} ({{mGenre}})</h3>
         <p>Starring: {{mCast}}</p>
         <p>{{mPlot}}</p>
         <p></p>
         <p></p>
-        <Showings v-bind:showings="this.showings"></Showings>
+        <!-- <Showings v-bind:showings="this.showings"></Showings> -->
       </div>
     </section>
   </div>
