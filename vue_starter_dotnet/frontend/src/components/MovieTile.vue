@@ -8,14 +8,13 @@
         <h3>{{mTitle}}</h3>
       </router-link>
       <h3>{{mRated}} ({{mGenre}})</h3>
-      <!-- <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3> -->
       <p class="bold">Starring: {{mActors}}</p>
       <p>{{mPlot}}</p>
       <p></p>
       <p v-if="isDetailPage === true" class="bold">
         Showtimes:
         <select id="dates" name="dates" v-model="selectedDate">
-          <option v-bind:key="d" v-bind:value="d" v-for="d in dropDownDates">{{d}}</option>
+          <option v-bind:key="d" v-bind:value="d" v-for="d in dropDownDates" aria-placeholder="Select a Date">{{d}}</option>
           
         </select>
       </p>
@@ -24,7 +23,6 @@
     </div>
   </div>
 </template>
-<!--router-link to="/movies/:id" -->
 <script>
 import Showings from "../components/Showings";
 
@@ -57,15 +55,7 @@ export default {
     mPoster: String,
     mIMDBId: String,
     mGenre: String,
-    isDetailPage: Boolean,
-    day1: Date
-    // day2:Date,
-    // day3:Date,
-    // day4:Date,
-    // day5:Date,
-    // day6:Date,
-    // day7:Date,
-    // day8:Date
+    isDetailPage: Boolean
   },
   components: {
     Showings
