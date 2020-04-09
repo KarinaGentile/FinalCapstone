@@ -14,11 +14,16 @@
       <p v-if="isDetailPage === true" class="bold">
         Showtimes:
         <select id="dates" name="dates" v-model="selectedDate">
-          <option v-bind:key="d" v-bind:value="d" v-for="d in dropDownDates" aria-placeholder="Select a Date">{{d}}</option>
-          
+          <option
+            v-bind:key="d"
+            v-bind:value="d"
+            v-for="d in dropDownDates"
+            aria-placeholder="Select a Date"
+          >{{d}}</option>
         </select>
       </p>
       <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
+      <p>You are viewing showtimes for {{this.d}}:</p>
       <Showings v-bind:showings="this.showings"></Showings>
     </div>
   </div>
@@ -38,13 +43,11 @@ export default {
           theaterId: 0
         }
       ],
-      selectedDate:null,
-      dropDownDates:[
-
-      ]
+      selectedDate: null,
+      dropDownDates: []
     };
   },
-  
+
   props: {
     mId: Number,
     mTitle: String,
@@ -60,18 +63,29 @@ export default {
   components: {
     Showings
   },
-  methods:{
-  fillInDate() {
-    let today=new Date();
-    console.log(today);
-    for (let i = 0; i < 7; i++) {
-      let d=new Date();
-      d.setDate(today.getDate()+i);
-      this.dropDownDates[i]=d;
-      // d.setDate(d.getDate() + i);
-    }
-    console.log(this.dropDownDates)
-  
+  methods: {
+    fillInDate() {
+      let today = new Date();
+      console.log(today);
+      for (let i = 0; i < 7; i++) {
+        let d = new Date();
+        d.setDate(today.getDate() + i);
+        this.dropDownDates[i] = d;
+        // d.setDate(d.getDate() + i);
+      }
+      console.log(this.dropDownDates);      
+    },
+    formatDate(date) {
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+          console.log([year, month, day].join('-'));
 }
   },
   created() {
