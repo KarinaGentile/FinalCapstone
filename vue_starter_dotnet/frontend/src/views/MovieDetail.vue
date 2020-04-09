@@ -14,6 +14,7 @@
         v-bind:mId="this.movie.movieId"
         :isDetailPage="true"
       />
+      <seat-grid></seat-grid>
       </div>
     </section>
   </div>
@@ -21,6 +22,8 @@
 
 <script>
 import MovieTile from "../components/MovieTile";
+import SeatGrid from "../components/SeatGrid";
+
 export default {
   data() {
     return {
@@ -39,7 +42,8 @@ export default {
     };
   },
   components: {
-    MovieTile
+    MovieTile,
+    SeatGrid
   },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
