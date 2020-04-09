@@ -57,8 +57,13 @@ namespace SmalltownCinemas.DAL
             return showing;
         }
 
-        public IList<Showing> GetShowingsByMovieId(int movieId, string date = "2020-04-09")
+        public IList<Showing> GetShowingsByMovieId(int movieId, string date = "")
         {
+            if (date == "")
+            {
+                date = $"{DateTime.Now:YYYY-MM-DD}";
+            }
+
 
             IList<Showing> showings = new List<Showing>();
             try
