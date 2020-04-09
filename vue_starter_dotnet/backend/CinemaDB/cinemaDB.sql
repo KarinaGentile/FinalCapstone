@@ -605,8 +605,6 @@ SET @allStart = DATEADD(HOUR, 10, @todaysDate)
 commit tran
 
 
-<<<<<<< HEAD
 select * from Showings
-=======
 select * from Showings where starttime > getdate()
->>>>>>> 902cd2a9a5ca9c1c3b3fb6dcddd7d8ee3e5e9a97
+
