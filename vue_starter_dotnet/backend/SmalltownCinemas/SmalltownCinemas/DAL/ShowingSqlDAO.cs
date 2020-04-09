@@ -57,8 +57,13 @@ namespace SmalltownCinemas.DAL
             return showing;
         }
 
-        public IList<Showing> GetShowingsByMovieId(int movieId)
+        public IList<Showing> GetShowingsByMovieId(int movieId, string date = "")
         {
+            if (date == "")
+            {
+                date = $"{DateTime.Now:YYYY-MM-DD}";
+            }
+
 
             IList<Showing> showings = new List<Showing>();
             try
@@ -67,11 +72,16 @@ namespace SmalltownCinemas.DAL
                 {
                     conn.Open();
 
-                    string sql = "select * from Showings where MovieId = @id and starttime > @currentTime";
+                    string sql = @"
+select * from Showings 
+where MovieId = @id 
+and starttime > @currentTime 
+and (convert(date,starttime)) = @selectedDate";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", movieId);
                     cmd.Parameters.AddWithValue("@currentTime", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@selectedDate", date);
                     SqlDataReader rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
@@ -80,7 +90,7 @@ namespace SmalltownCinemas.DAL
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

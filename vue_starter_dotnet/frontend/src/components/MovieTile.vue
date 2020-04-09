@@ -1,27 +1,26 @@
 <template>
   <div id="movieTile">
-    <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"> <img class="poster" v-bind:src="mPoster"/></router-link>
+    <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
+      <img class="poster" v-bind:src="mPoster" />
+    </router-link>
     <div id="descriptionBox">
-      <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}"><h3>{{mTitle}}</h3></router-link>
+      <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
+        <h3>{{mTitle}}</h3>
+      </router-link>
       <h3>{{mRated}} ({{mGenre}})</h3>
       <!-- <h3>{{mTitle}} --- {{mRating}} ({{mGenre}})</h3> -->
       <p class="bold">Starring: {{mActors}}</p>
       <p>{{mPlot}}</p>
       <p></p>
-      <p v-if="isDetailPage === true" class="bold">Showtimes:
-      <select id="dates" name="dates">
-        <option value="day1">Today</option>
-        <option value="day2">Thursday</option>
-        <option value="day3">Friday</option>
-        <option value="day4">Saturday</option>
-        <option value="day5">Sunday</option>
-        <option value="day6">Monday</option>
-        <option value="day7">Tuesday</option>
-        <option value="day8">Wednesday</option>
-      </select></p>
+      <p v-if="isDetailPage === true" class="bold">
+        Showtimes:
+        <select id="dates" name="dates">
+          <option v-bind:key="d" v-bind:value="d.getDate()" v-for="d in dropDownDates"></option>
+          
+        </select>
+      </p>
       <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
-      <Showings
-      v-bind:showings="this.showings"></Showings>
+      <Showings v-bind:showings="this.showings"></Showings>
     </div>
   </div>
 </template>
@@ -32,8 +31,7 @@ import Showings from "../components/Showings";
 export default {
   data() {
     return {
-      showings:
-      [
+      showings: [
         {
           showingId: 0,
           startTime: "",
@@ -41,9 +39,13 @@ export default {
           movieId: 0,
           theaterId: 0
         }
+      ],
+      dropDownDates:[
+
       ]
     };
   },
+  
   props: {
     mId: Number,
     mTitle: String,
@@ -54,13 +56,36 @@ export default {
     mPoster: String,
     mIMDBId: String,
     mGenre: String,
-    isDetailPage: Boolean
+    isDetailPage: Boolean,
+    day1: Date
+    // day2:Date,
+    // day3:Date,
+    // day4:Date,
+    // day5:Date,
+    // day6:Date,
+    // day7:Date,
+    // day8:Date
   },
   components: {
     Showings
   },
+  methods:{
+  fillInDate() {
+    let today=new Date();
+    console.log(today);
+    let d=today;
+    for (let i = 0; i < 7; i++) {
+      
+      this.dropDownDates[i]=d;
+      d.setDate(d.getDate() + 1);
+    }
+    console.log(this.dropDownDates)
+  
+}
+  },
   created() {
-    console.log(this.mId)
+    this.fillInDate();
+    console.log(this.mId);
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/showings/${this.mId}`;
     // url += `/api/showings/2`;
@@ -102,12 +127,12 @@ export default {
   margin-right: 10px;
 }
 
-a:hover, a:link, a:active
-{
-    text-decoration: none;
+a:hover,
+a:link,
+a:active {
+  text-decoration: none;
 }
 .bold {
   font-weight: bold;
 }
-
 </style>
