@@ -1,6 +1,8 @@
 <template>
   <div class="Showings">
-    <button v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}</button>
+    <router-link v-bind:to="{name:'seat-selection', params:{id:mId}}"> 
+    <button v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}
+    </button></router-link>
   </div>
 </template>
 
