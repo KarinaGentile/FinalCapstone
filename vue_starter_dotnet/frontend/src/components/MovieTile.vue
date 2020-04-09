@@ -15,14 +15,8 @@
       <p v-if="isDetailPage === true" class="bold">
         Showtimes:
         <select id="dates" name="dates">
-          <option v-bind:value="today"></option>
-          <option value="day1">Thursday</option>
-          <option value="day2">Friday</option>
-          <option value="day3">Saturday</option>
-          <option value="day4">Sunday</option>
-          <option value="day5">Monday</option>
-          <option value="day6">Tuesday</option>
-          <option value="day7">Wednesday</option>
+          <option v-bind:key="d" v-bind:value="d.getDate()" v-for="d in dropDownDates"></option>
+          
         </select>
       </p>
       <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
@@ -76,11 +70,21 @@ export default {
     Showings
   },
   methods:{
-function name(params) {
+  fillInDate() {
+    let today=new Date();
+    console.log(today);
+    let d=today;
+    for (let i = 0; i < 7; i++) {
+      
+      this.dropDownDates[i]=d;
+      d.setDate(d.getDate() + 1);
+    }
+    console.log(this.dropDownDates)
   
 }
   },
   created() {
+    this.fillInDate();
     console.log(this.mId);
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/showings/${this.mId}`;
