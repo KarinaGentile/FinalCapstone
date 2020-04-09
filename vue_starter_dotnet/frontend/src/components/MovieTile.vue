@@ -14,8 +14,8 @@
       <p></p>
       <p v-if="isDetailPage === true" class="bold">
         Showtimes:
-        <select id="dates" name="dates">
-          <option v-bind:key="d" v-bind:value="d.getDate()" v-for="d in dropDownDates"></option>
+        <select id="dates" name="dates" v-model="selectedDate">
+          <option v-bind:key="d" v-bind:value="d" v-for="d in dropDownDates">{{d}}</option>
           
         </select>
       </p>
@@ -40,6 +40,7 @@ export default {
           theaterId: 0
         }
       ],
+      selectedDate:null,
       dropDownDates:[
 
       ]
@@ -73,11 +74,11 @@ export default {
   fillInDate() {
     let today=new Date();
     console.log(today);
-    let d=today;
     for (let i = 0; i < 7; i++) {
-      
+      let d=new Date();
+      d.setDate(today.getDate()+i);
       this.dropDownDates[i]=d;
-      d.setDate(d.getDate() + 1);
+      // d.setDate(d.getDate() + i);
     }
     console.log(this.dropDownDates)
   
