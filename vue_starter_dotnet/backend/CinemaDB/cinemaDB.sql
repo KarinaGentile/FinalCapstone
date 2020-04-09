@@ -108,6 +108,9 @@ values
 
 DECLARE @todaysDate datetime = CONVERT(date, getdate());
 DECLARE @allStart datetime = (DATEADD(hour, 10, @todaysDate));
+DECLARE @SecondStart datetime = (DATEADD(hour, 10, DATEADD(Minute, 15, @todaysDate)));
+DECLARE @thirdStart datetime = (DATEADD(hour, 10, DATEADD(Minute, 30, @todaysDate)));
+
 
 insert into Showings
 (MovieId, StartTime, EndTime, TheaterId)
@@ -115,12 +118,14 @@ values
 (1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)), 1)
 ,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  2)
 ,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  3)
-,(1, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
-,(2, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
-,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
-,(3, @allStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
+,(1, @SecondStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 1),@allStart)),  4)
+,(2, @SecondStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 2),@allStart)),  5)
+,(3, @SecondStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  6)
+,(3, @thirdStart, (DATEADD(MINUTE,(Select Runtime from Movies where MovieId = 3),@allStart)),  7)
 
-SET @allStart = DATEADD(minute, 15, (select MAX(EndTime) from Showings));
+(select MAX(EndTime) from Showings)
+
+SET @allStart = DATEADD(minute, datediff(minute,0,(select MAX(EndTime) from Showings)) / 15 * 15, 0)
 
 insert into Showings
 (MovieId, StartTime, EndTime, TheaterId)
@@ -600,4 +605,4 @@ SET @allStart = DATEADD(HOUR, 10, @todaysDate)
 commit tran
 
 
-select count(*) from Showings
+select * from Showings
