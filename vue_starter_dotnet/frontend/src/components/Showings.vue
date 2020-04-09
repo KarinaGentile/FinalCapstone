@@ -1,11 +1,15 @@
 <template>
   <div class="Showings">
-    <router-link v-bind:to="{name:'seat-selection', params:{seatId}}"> 
+    <router-link v-bind:to="{name:'ticket-selection', params:{ticketId}}"> 
     <button v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}
     </button></router-link>
   </div>
 </template>
-
+<!-- When I click on a showtime, 3 drop-downs or counter buttons show up for adult, child, & senior ticket options.
+After selection, estimated total populates & seatgrid shows up below.
+If startime < 12:00PM, -$2.00 for each ticket
+I am able to reserve as many seats as # of tickets that have been selected.
+-->
 <script>
 export default {
   data() {
