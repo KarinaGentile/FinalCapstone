@@ -600,4 +600,4 @@ SET @allStart = DATEADD(HOUR, 10, @todaysDate)
 commit tran
 
 
-select count(*) from Showings
+select * from Showings where starttime > getdate()

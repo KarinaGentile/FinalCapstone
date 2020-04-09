@@ -28,8 +28,13 @@ namespace SmalltownCinemas.Controllers
         [HttpGet("{movieId}")]
         public IActionResult GetAllShowingsByMovieId(int movieId)
         {
-
             return new JsonResult(showingDAO.GetShowingsByMovieId(movieId));
+        }
+
+        [HttpGet("{movieId}/{date}")]
+        public IActionResult GetAllShowingsByMovieId(int movieId, string date)
+        {
+            return new JsonResult(showingDAO.GetShowingsByMovieId(movieId, date));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SmalltownCinemas.DAL
     {
         IList<Showing> GetAllShowings();
 
-        IList<Showing> GetShowingsByMovieId(int movieId);
+        IList<Showing> GetShowingsByMovieId(int movieId, string date = "2020-04-09");
 
 
     }
