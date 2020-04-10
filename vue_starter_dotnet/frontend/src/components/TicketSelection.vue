@@ -2,14 +2,14 @@
   <div id="ticketInterface">
       
       <h3>Please select the number and type of tickets</h3>
-      <label>Adults: </label>
+      <label>Adults ($8.75): </label>
       <input @change="getTotalTickets" type="number" v-bind:max="maxAdult" min="0" v-model.number="adultTickets"/>
-      <label>Children: </label>
+      <label>Children ($5.25): </label>
       <input @change="getTotalTickets" type="number" v-bind:max="maxChild" min="0" v-model.number="childTickets" />
-      <label>Seniors: </label>
+      <label>Seniors ($6.00): </label>
       <input @change="getTotalTickets" type="number" v-bind:max="maxSenior" min="0" v-model.number="seniorTickets" />
       <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
-      
+      <p class="estimate" v-bind:key="totalPrice">Your estimated total is ${{totalPrice}}</p>
       
       
       <input @click="confirmSelection" class="block" type="button" value="Confirm selection"/>
@@ -27,6 +27,10 @@ export default {
             maxChild: 9,
             maxAdult: 9,
             maxSenior: 9,
+            childPrice: 0.00,
+            adultPrice: 0.00,
+            seniorPrice: 0.00,
+            totalPrice: 0.00
         
         }
     },
@@ -45,6 +49,14 @@ export default {
             console.log('senior: '+this.seniorTickets)
             console.log('total: '+this.totalTickets)
             return this.totalTickets;
+        },
+            getTotalPrice() {
+            let childPrice = 5.25;
+            let adultPrice = 8.75;
+            let seniorPrice = 6.00
+            this.totalPrice = childPrice + adultPrice + seniorPrice;
+            console.log('total: '+this.totalPrice)
+            return this.totalPrice;
         }
     }
 }
@@ -63,5 +75,9 @@ export default {
 
 .block {
     display: block;
+}
+
+.estimate{
+    text-align: left;
 }
 </style>
