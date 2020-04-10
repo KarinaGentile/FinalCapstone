@@ -32,6 +32,7 @@
   </div>
 </template>
 <script>
+import Showings from "../components/Showings";
 export default {
   data() {
     return {
@@ -45,8 +46,12 @@ export default {
       childPrice: 0.0,
       adultPrice: 0.0,
       seniorPrice: 0.0,
-      totalPrice: 0.0
+      totalPrice: 0.0,
     };
+  },
+  props:
+  {
+    showings: Array,
   },
   methods: {
     confirmSelection() {
@@ -70,9 +75,19 @@ export default {
 };
 
 function newGetTotalPrice(childTickets,adultTickets,seniorTickets) {
+//    if ({s.startTimeFormatted}<12.00){
+//   let childPrice = 3.25 * childTickets;
+//   let adultPrice = 6.75 *adultTickets;
+//   let seniorPrice = 4.00 *seniorTickets;
+//    } else {
+//   let childPrice = 5.25 * childTickets;
+//   let adultPrice = 8.75 *adultTickets;
+//   let seniorPrice = 6.00 *seniorTickets;  
+// }
   let childPrice = 5.25 * childTickets;
   let adultPrice = 8.75 *adultTickets;
   let seniorPrice = 6.00 *seniorTickets;
+
   let totalPrice = childPrice + adultPrice + seniorPrice;
   console.log("total: " + totalPrice);
   return totalPrice;
