@@ -61,7 +61,7 @@ namespace SmalltownCinemas.DAL
         {
             if (date == "")
             {
-                date = $"{DateTime.Now:YYYY-MM-DD}";
+                date = $"{DateTime.Now:yyyy-MM-dd}";
             }
 
 
