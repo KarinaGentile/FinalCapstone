@@ -100,6 +100,9 @@ export default {
         .then(json => {
           // console.table(json);
           this.showings = json;
+        })
+        .then(() => {
+          window.alert(`You have selected showtimes for ${this.selectedDate}`);
         });
     },
     formatDate(date) {
