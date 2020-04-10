@@ -19,11 +19,9 @@
             v-bind:value="d"
             v-for="d in dropDownDates"
             aria-placeholder="Select a Date"
-          >{{d}}</option>
+          >{{d}}</option>  
         </select>
-      </p>
-            <p>You are viewing showtimes for: {{d}}</p>
-      <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
+      <p v-if="isDetailPage !== true" class="bold" p.message = hide>Today's Showtimes:</p>
       <Showings v-bind:showings="this.showings"></Showings>
     </div>
   </div>
@@ -75,19 +73,19 @@ export default {
       }
       console.log(this.dropDownDates);      
     },
-    formatDate(date) {
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+    // formatDate(date) {
+    // let d = new Date(date),
+    //     month = '' + (d.getMonth() + 1),
+    //     day = '' + d.getDate(),
+    //     year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-          console.log([year, month, day].join('-'));
-}
-  },
+    // if (month.length < 2) 
+    //     month = '0' + month;
+    // if (day.length < 2) 
+    //     day = '0' + day;
+    //       console.log([year, month, day].join('-'));
+},
+  
   created() {
     this.fillInDate();
     console.log(this.mId);

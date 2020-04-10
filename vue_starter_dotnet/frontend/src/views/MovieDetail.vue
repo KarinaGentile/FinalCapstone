@@ -15,9 +15,11 @@
         :isDetailPage="true"
       />
       <seat-grid></seat-grid>
+        <p class= "message">You are viewing showtimes for: {{date}}</p>
       </div>
     </section>
   </div>
+
 </template>
 
 <script>
@@ -45,6 +47,19 @@ export default {
     MovieTile,
     SeatGrid
   },
+    formatDate(date) {
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+          console.log([year, month, day].join('-'));
+    },
+
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/movies/${this.$route.params.id}`;
