@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace SmalltownCinemaShowtimeGeneration
+namespace SmalltownCinemas.Models
 {
     public class Screen
     {
@@ -30,16 +31,16 @@ namespace SmalltownCinemaShowtimeGeneration
 
             while (currDate.AddDays(1) < startDate.AddDays(8))
             {
-                
+
                 DateTime latestStart = currDate.AddHours(22);
-                
+
 
                 if (CanAnotherShowtimeBeAdded(latestStart))
                 {
                     StartTimes.Add(startTime);
                     startTime = startTime.AddMinutes(Runtime + Gap);
                     startTime = RoundStartTimeToNext15(startTime);
-                } 
+                }
                 else
                 {
                     currDate = currDate.AddDays(1);
