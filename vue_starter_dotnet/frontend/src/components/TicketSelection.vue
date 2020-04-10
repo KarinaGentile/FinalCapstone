@@ -57,6 +57,7 @@ export default {
   methods: {
     confirmSelection() {
       console.log("Selection confirmed");
+      console.log(this.selectedStartTime)
       this.$emit("selection-confirmed");
     },
     getTotalTickets() {

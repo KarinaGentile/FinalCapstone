@@ -15,7 +15,7 @@
           :isDetailPage="true"
            v-on:display-tickets="displayTickets"
         />
-        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed" v-bind:selectedStartTime="selectedStartTime"></ticket-selection>
+        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed" v-bind:selectedStartTime="selectedStartTime" v-bind:key="selectedStartTime"></ticket-selection>
 
         <seat-grid></seat-grid>
       </div>
@@ -65,7 +65,8 @@ export default {
   methods: {
     displayTickets($event) {
       console.log("display tickets");
-      console.log($event)
+      
+      this.selectedStartTime = $event;
       this.areTicketsDisplayed = true;
     },
     displaySeatGrid() {
