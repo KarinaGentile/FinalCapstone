@@ -9,10 +9,11 @@ namespace SmalltownCinemaShowtimeGeneration
         
         public static void Main(string[] args)
         {
-            Screen screen1 = new Screen(124);
+            Screen screen1 = new Screen(124, 0);
             screen1.AddShowtimes();
             screen1.PrintShowtimes();
-            Screen screen2 = new Screen(180);
+            Console.WriteLine();
+            Screen screen2 = new Screen(124, 15);
             screen2.AddShowtimes();
             screen2.PrintShowtimes();
         }
