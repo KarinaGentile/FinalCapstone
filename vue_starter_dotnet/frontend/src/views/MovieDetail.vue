@@ -2,24 +2,25 @@
   <div id="movie">
     <section class="centeredPanel">
       <div id="movieBox">
-      <movie-tile
-        v-if="this.movie.movieId > 0"
-        v-bind:key="this.movie.movieId"
-        v-bind:mTitle="this.movie.title"
-        v-bind:mPoster="this.movie.poster"
-        v-bind:mRated="this.movie.rated"
-        v-bind:mPlot="this.movie.plot"
-        v-bind:mActors="this.movie.actors"
-        v-bind:mGenre="this.movie.genre"
-        v-bind:mId="this.movie.movieId"
-        :isDetailPage="true"
-      />
-      <seat-grid></seat-grid>
-        <p class= "message">You are viewing showtimes for: {{date}}</p>
+        <movie-tile
+          v-if="this.movie.movieId > 0"
+          v-bind:key="this.movie.movieId"
+          v-bind:mTitle="this.movie.title"
+          v-bind:mPoster="this.movie.poster"
+          v-bind:mRated="this.movie.rated"
+          v-bind:mPlot="this.movie.plot"
+          v-bind:mActors="this.movie.actors"
+          v-bind:mGenre="this.movie.genre"
+          v-bind:mId="this.movie.movieId"
+          :isDetailPage="true"
+           v-on:display-tickets="displayTickets"
+        />
+        <h3 v-if="areTicketsDisplayed"> Tickets!</h3>
+        <seat-grid></seat-grid>
+        <p class="message">You are viewing showtimes for: {{date}}</p>
       </div>
     </section>
   </div>
-
 </template>
 
 <script>
@@ -40,26 +41,30 @@ export default {
         Plot: ""
       },
       mID: 0,
-      movies: []
+      movies: [],
+      areTicketsDisplayed: false
     };
   },
   components: {
     MovieTile,
     SeatGrid
   },
-    formatDate(date) {
+  formatDate(date) {
     let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-          console.log([year, month, day].join('-'));
-    },
-
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+    console.log([year, month, day].join("-"));
+  },
+  methods: {
+    displayTickets() {
+      console.log("display tickets");
+      this.areTicketsDisplayed = true;
+    }
+  },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/movies/${this.$route.params.id}`;

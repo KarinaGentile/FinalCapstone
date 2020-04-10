@@ -1,8 +1,10 @@
 <template>
   <div class="Showings">
-    <router-link v-bind:to="{name:'ticket-selection', params:{ticketId}}"> 
+    <!-- <router-link v-bind:to="{name:'ticket-selection', params:{ticketId}}"> 
     <button v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}
-    </button></router-link>
+    </button></router-link> -->
+    <button @click="showingSelected" v-for="s in showings" v-bind:key="s.id">{{s.startTimeFormatted}}
+    </button>
   </div>
 </template>
 <!-- When I click on a showtime, 3 drop-downs or counter buttons show up for adult, child, & senior ticket options.
@@ -19,6 +21,12 @@ export default {
   props:
   {
     showings: Array,
+  },
+  methods: {
+    showingSelected() {
+      this.$emit('showing-selected')
+      console.log('button pressed for sel showing')
+    }
   }
 };
 </script>

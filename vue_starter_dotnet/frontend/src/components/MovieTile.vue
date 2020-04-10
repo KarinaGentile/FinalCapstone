@@ -1,9 +1,9 @@
 <template>
-  <div id="movieTile">
+  <div id="movieTile" >
     <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
       <img class="poster" v-bind:src="mPoster" />
     </router-link>
-    <div id="descriptionBox">
+    <div id="descriptionBox" v-on:showing-selected="passShowSelEvent" >
       <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
         <h3>{{mTitle}}</h3>
       </router-link>
@@ -28,7 +28,7 @@
         </select>
       </p>
       <p v-if="isDetailPage !== true" class="bold" p.message="hide">Today's Showtimes:</p>
-      <Showings v-bind:showings="this.showings"></Showings>
+      <Showings v-bind:showings="this.showings" v-on:showing-selected="passShowSelEvent"></Showings>
     </div>
   </div>
 </template>
@@ -68,6 +68,11 @@ export default {
     Showings
   },
   methods: {
+    
+    passShowSelEvent() {
+      console.log("got showing selected event");
+      this.$emit("display-tickets");
+    },
     fillInDate() {
       let today = new Date();
       console.log(today);
