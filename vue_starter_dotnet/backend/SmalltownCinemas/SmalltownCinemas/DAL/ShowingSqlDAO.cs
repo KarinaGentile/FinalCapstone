@@ -70,6 +70,24 @@ namespace SmalltownCinemas.DAL
                     cmd.ExecuteNonQuery();
 
                     //TODO: add insertion logic and looping
+                    foreach (Screen s in screens)
+                    {
+                        foreach (DateTime t in s.StartTimes)
+                        {
+                            string sql2 = @"insert into Showings
+                                    (MovieId, StartTime, EndTime, TheaterId)
+                                    values
+                                    (@movieId, @startTime, @endTime, @theaterId)";
+                            SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                            cmd2.Parameters.AddWithValue("@movieId", s.MovieId);
+                            cmd2.Parameters.AddWithValue("@startTime", t);
+                            cmd2.Parameters.AddWithValue("@endTime", t.AddMinutes(s.Runtime));
+                            cmd2.Parameters.AddWithValue("@theaterId", s.TheaterId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                    }
+
+
                 }
             }
             catch (Exception ex)

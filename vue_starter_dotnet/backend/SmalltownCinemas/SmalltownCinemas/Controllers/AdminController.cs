@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SmalltownCinemas.DAL;
 using SmalltownCinemas.Models;
 
 namespace SmalltownCinemas.Controllers
@@ -17,8 +18,14 @@ namespace SmalltownCinemas.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
+        private IShowingDAO showingDAO;
         public string BaseURL { get; set; } = "https://www.omdbapi.com/?";
         public string ApiKey { get; } = "apikey=42acd889";
+
+        public AdminController(IShowingDAO showing)
+        {
+            this.showingDAO = showing;
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetAndStoreMovieById(string id)
@@ -38,6 +45,13 @@ namespace SmalltownCinemas.Controllers
             Movie movie = new Movie();
             movie = JsonConvert.DeserializeObject<Movie>(result);
             return new JsonResult(movie);
+        }
+
+        [HttpGet("generateShowings")]
+        public IActionResult GenerateShowings()
+        {
+            showingDAO.GenerateAllShowings();
+            return RedirectToAction("GetAllShowings", "Showings");
         }
     }
 }

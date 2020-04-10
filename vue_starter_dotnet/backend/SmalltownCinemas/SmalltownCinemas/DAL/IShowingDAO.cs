@@ -12,6 +12,6 @@ namespace SmalltownCinemas.DAL
 
         IList<Showing> GetShowingsByMovieId(int movieId, string date = "");
 
-
+        void GenerateAllShowings();
     }
 }
