@@ -15,7 +15,7 @@
           :isDetailPage="true"
            v-on:display-tickets="displayTickets"
         />
-        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed"></ticket-selection>
+        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed" v-bind:selectedStartTime="selectedStartTime"></ticket-selection>
 
         <seat-grid></seat-grid>
       </div>
@@ -43,7 +43,8 @@ export default {
       },
       mID: 0,
       movies: [],
-      areTicketsDisplayed: false
+      areTicketsDisplayed: false,
+      selectedStartTime: ""
     };
   },
   components: {
@@ -62,8 +63,9 @@ export default {
     console.log([year, month, day].join("-"));
   },
   methods: {
-    displayTickets() {
+    displayTickets($event) {
       console.log("display tickets");
+      console.log($event)
       this.areTicketsDisplayed = true;
     },
     displaySeatGrid() {

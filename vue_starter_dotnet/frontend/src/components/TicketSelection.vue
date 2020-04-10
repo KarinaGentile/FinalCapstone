@@ -47,11 +47,12 @@ export default {
       adultPrice: 0.0,
       seniorPrice: 0.0,
       totalPrice: 0.0,
+      Showings
     };
   },
-  props:
-  {
+  props: {
     showings: Array,
+    selectedStartTime: String
   },
   methods: {
     confirmSelection() {
@@ -68,25 +69,32 @@ export default {
       console.log("adult: " + this.adultTickets);
       console.log("senior: " + this.seniorTickets);
       console.log("total: " + this.totalTickets);
-      this.totalPrice = newGetTotalPrice(this.childTickets,this.adultTickets,this.seniorTickets);
+      this.totalPrice = newGetTotalPrice(
+        this.childTickets,
+        this.adultTickets,
+        this.seniorTickets
+      );
       return this.totalTickets;
-    },
+    }
+  },
+  created() {
+      console.log('selectedStartime from ticket interface'+ this.selectedStartTime)
   }
 };
 
-function newGetTotalPrice(childTickets,adultTickets,seniorTickets) {
-//    if ({s.startTimeFormatted}<12.00){
-//   let childPrice = 3.25 * childTickets;
-//   let adultPrice = 6.75 *adultTickets;
-//   let seniorPrice = 4.00 *seniorTickets;
-//    } else {
-//   let childPrice = 5.25 * childTickets;
-//   let adultPrice = 8.75 *adultTickets;
-//   let seniorPrice = 6.00 *seniorTickets;  
-// }
+function newGetTotalPrice(childTickets, adultTickets, seniorTickets) {
+  //    if ({s.startTimeFormatted}<12.00){
+  //   let childPrice = 3.25 * childTickets;
+  //   let adultPrice = 6.75 *adultTickets;
+  //   let seniorPrice = 4.00 *seniorTickets;
+  //    } else {
+  //   let childPrice = 5.25 * childTickets;
+  //   let adultPrice = 8.75 *adultTickets;
+  //   let seniorPrice = 6.00 *seniorTickets;
+  // }
   let childPrice = 5.25 * childTickets;
-  let adultPrice = 8.75 *adultTickets;
-  let seniorPrice = 6.00 *seniorTickets;
+  let adultPrice = 8.75 * adultTickets;
+  let seniorPrice = 6.0 * seniorTickets;
 
   let totalPrice = childPrice + adultPrice + seniorPrice;
   console.log("total: " + totalPrice);

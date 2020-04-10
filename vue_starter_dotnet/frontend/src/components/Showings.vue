@@ -23,8 +23,8 @@ export default {
     showings: Array,
   },
   methods: {
-    showingSelected() {
-      this.$emit('showing-selected')
+    showingSelected($event) {
+      this.$emit('showing-selected',$event.target.innerText)
       console.log('button pressed for sel showing')
     }
   }

@@ -69,9 +69,11 @@ export default {
   },
   methods: {
     
-    passShowSelEvent() {
+    passShowSelEvent($event) {
       console.log("got showing selected event");
-      this.$emit("display-tickets");
+      console.log($event)
+      this.$emit("display-tickets",$event);
+      
     },
     fillInDate() {
       let today = new Date();
