@@ -3,11 +3,11 @@
       
       <h3>Please select the number and type of tickets</h3>
       <label>Adults: </label>
-      <input @change="getTotalTickets" type="number" v-bind:value="adultTickets"/>
+      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="adultTickets"/>
       <label>Children: </label>
-      <input @change="getTotalTickets" type="number" v-bind:value="childTickets" />
+      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="childTickets" />
       <label>Seniors: </label>
-      <input @change="getTotalTickets" type="number" v-bind:value="seniorTickets" />
+      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="seniorTickets" />
       <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
       
       
