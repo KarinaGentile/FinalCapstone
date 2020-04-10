@@ -15,9 +15,10 @@
           :isDetailPage="true"
            v-on:display-tickets="displayTickets"
         />
-        <h3 v-if="areTicketsDisplayed"> Tickets!</h3>
+        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed"></ticket-selection>
+
         <seat-grid></seat-grid>
-        <p class="message">You are viewing showtimes for: {{date}}</p>
+        <!-- <p class="message">You are viewing showtimes for: {{date}}</p> -->
       </div>
     </section>
   </div>
@@ -26,6 +27,7 @@
 <script>
 import MovieTile from "../components/MovieTile";
 import SeatGrid from "../components/SeatGrid";
+import TicketSelection from "../components/TicketSelection";
 
 export default {
   data() {
@@ -47,7 +49,8 @@ export default {
   },
   components: {
     MovieTile,
-    SeatGrid
+    SeatGrid,
+    TicketSelection
   },
   formatDate(date) {
     let d = new Date(date),
@@ -63,6 +66,9 @@ export default {
     displayTickets() {
       console.log("display tickets");
       this.areTicketsDisplayed = true;
+    },
+    displaySeatGrid() {
+      console.log('display seats')
     }
   },
   created() {
