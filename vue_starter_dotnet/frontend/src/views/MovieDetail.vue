@@ -18,7 +18,6 @@
         <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed"></ticket-selection>
 
         <seat-grid></seat-grid>
-        <!-- <p class="message">You are viewing showtimes for: {{date}}</p> -->
       </div>
     </section>
   </div>
