@@ -27,7 +27,7 @@
     />
     <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
     <p class="estimate" v-bind:key="totalPrice">Your estimated total is ${{totalPrice}}</p>
-
+    <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
     <input @click="confirmSelection" class="block" type="button" value="Confirm selection" />
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
   methods: {
     confirmSelection() {
       console.log("Selection confirmed");
-      console.log(this.selectedStartTime)
+      console.log(this.selectedStartTime);
       this.$emit("selection-confirmed");
     },
     getTotalTickets() {
@@ -73,30 +73,33 @@ export default {
       this.totalPrice = newGetTotalPrice(
         this.childTickets,
         this.adultTickets,
-        this.seniorTickets
+        this.seniorTickets,
+        this.selectedStartTime
       );
       return this.totalTickets;
     }
   },
   created() {
-      console.log('selectedStartime from ticket interface'+ this.selectedStartTime)
+    console.log(
+      "selectedStartTime from ticket interface" + this.selectedStartTime
+    );
   }
 };
 
-function newGetTotalPrice(childTickets, adultTickets, seniorTickets) {
-  //    if ({s.startTimeFormatted}<12.00){
-  //   let childPrice = 3.25 * childTickets;
-  //   let adultPrice = 6.75 *adultTickets;
-  //   let seniorPrice = 4.00 *seniorTickets;
-  //    } else {
-  //   let childPrice = 5.25 * childTickets;
-  //   let adultPrice = 8.75 *adultTickets;
-  //   let seniorPrice = 6.00 *seniorTickets;
-  // }
-  let childPrice = 5.25 * childTickets;
-  let adultPrice = 8.75 * adultTickets;
-  let seniorPrice = 6.0 * seniorTickets;
+function newGetTotalPrice(childTickets, adultTickets, seniorTickets, selectedStartTime) {
+  let childPrice = 0;
+  let adultPrice = 0;
+  let seniorPrice = 0;
 
+  if (selectedStartTime < "12:00") {
+    childPrice = 3.25 * childTickets;
+    adultPrice = 6.75 * adultTickets;
+    seniorPrice = 4.0 * seniorTickets;
+  } else {
+    childPrice = 5.25 * childTickets;
+    adultPrice = 8.75 * adultTickets;
+    seniorPrice = 6.0 * seniorTickets;
+  }
   let totalPrice = childPrice + adultPrice + seniorPrice;
   console.log("total: " + totalPrice);
   return totalPrice;
