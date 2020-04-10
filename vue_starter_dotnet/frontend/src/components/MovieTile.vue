@@ -22,8 +22,8 @@
           >{{d}}</option>
         </select>
       </p>
+            <p>You are viewing showtimes for: {{d}}</p>
       <p v-if="isDetailPage !== true" class="bold">Today's Showtimes:</p>
-      <p>You are viewing showtimes for: {{this.d}}</p>
       <Showings v-bind:showings="this.showings"></Showings>
     </div>
   </div>
