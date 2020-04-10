@@ -12,16 +12,22 @@
       <p>{{mPlot}}</p>
       <p></p>
       <p v-if="isDetailPage === true" class="bold">
-        Showtimes:
-        <select id="dates" name="dates" v-model="selectedDate">
+        Showtimes for:
+        <select
+          @change="newDateSelected"
+          id="dates"
+          name="dates"
+          v-model="selectedDate"
+        >
           <option
             v-bind:key="d"
             v-bind:value="d"
             v-for="d in dropDownDates"
             aria-placeholder="Select a Date"
-          >{{d}}</option>  
+          >{{d}}</option>
         </select>
-      <p v-if="isDetailPage !== true" class="bold" p.message = hide>Today's Showtimes:</p>
+      </p>
+      <p v-if="isDetailPage !== true" class="bold" p.message="hide">Today's Showtimes:</p>
       <Showings v-bind:showings="this.showings"></Showings>
     </div>
   </div>
@@ -71,21 +77,49 @@ export default {
         this.dropDownDates[i] = d;
         // d.setDate(d.getDate() + i);
       }
-      console.log(this.dropDownDates);      
+      console.log(this.dropDownDates);
     },
-    // formatDate(date) {
-    // let d = new Date(date),
-    //     month = '' + (d.getMonth() + 1),
-    //     day = '' + d.getDate(),
-    //     year = d.getFullYear();
+    newDateSelected() {
+      console.log("new date selected");
+      console.log(this.selectedDate);
+      let searchDate = this.formatDate(this.selectedDate);
+      console.log(searchDate);
+      let url = process.env.VUE_APP_REMOTE_API;
+      url += `/api/showings/${this.mId}/${searchDate}`;
+      // url += `/api/showings/2`;
+      console.log("Generated url: " + url);
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            console.log("Response status: " + response.status);
+            console.log("Response status text: " + response.statusText);
+            throw new Error("Netw. response not ok");
+          }
+          return response.json();
+        })
+        .then(json => {
+          // console.table(json);
+          this.showings = json;
+        });
+    },
+    formatDate(date) {
+      let d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+      console.log("formatted date: " + year + month + day);
+      // console.log('format: '+month);
+      if (month.length < 2) {
+        month = "0" + month;
+      }
+      if (day.length < 2) {
+        day = "0" + day;
+        console.log([year, month, day].join("-"));
+      }
+      return `${year}-${month}-${day}`;
+    }
+  },
 
-    // if (month.length < 2) 
-    //     month = '0' + month;
-    // if (day.length < 2) 
-    //     day = '0' + day;
-    //       console.log([year, month, day].join('-'));
-},
-  
   created() {
     this.fillInDate();
     console.log(this.mId);
