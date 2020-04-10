@@ -22,8 +22,7 @@ namespace SmalltownCinemaShowtimeGeneration
             foreach (var screen in screens)
             {
                 screen.AddShowtimes();
-                screen.PrintShowtimes();
-                Console.WriteLine();
+                
             }
         }
 

@@ -129,7 +129,8 @@ namespace SmalltownCinemas.DAL
 select * from Showings 
 where MovieId = @id 
 and starttime > @currentTime 
-and (convert(date,starttime)) = @selectedDate";
+and (convert(date,starttime)) = @selectedDate
+order by starttime";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", movieId);
