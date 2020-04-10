@@ -3,11 +3,11 @@
       
       <h3>Please select the number and type of tickets</h3>
       <label>Adults: </label>
-      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="adultTickets"/>
+      <input @change="getTotalTickets" type="number" v-bind:max="maxAdult" min="0" v-model.number="adultTickets"/>
       <label>Children: </label>
-      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="childTickets" />
+      <input @change="getTotalTickets" type="number" v-bind:max="maxChild" min="0" v-model.number="childTickets" />
       <label>Seniors: </label>
-      <input @change="getTotalTickets" type="number" max="9" min="0" v-model.number="seniorTickets" />
+      <input @change="getTotalTickets" type="number" v-bind:max="maxSenior" min="0" v-model.number="seniorTickets" />
       <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
       
       
@@ -23,7 +23,10 @@ export default {
             childTickets: 0,
             adultTickets: 0,
             seniorTickets: 0,
-            totalTickets: 0
+            totalTickets: 0,
+            maxChild: 9,
+            maxAdult: 9,
+            maxSenior: 9,
         
         }
     },
@@ -33,6 +36,9 @@ export default {
             this.$emit('selection-confirmed')
         },
         getTotalTickets() {
+            this.maxAdult = 9 - (this.childTickets + this.seniorTickets);
+            this.maxChild = 9 - (this.adultTickets + this.seniorTickets);
+            this.maxSenior = 9 - (this.childTickets + this.adultTickets);
             this.totalTickets = this.childTickets + this.adultTickets + this.seniorTickets;
             console.log('children: '+this.childTickets)
             console.log('adult: '+this.adultTickets)
