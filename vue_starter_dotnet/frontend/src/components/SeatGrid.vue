@@ -21,7 +21,9 @@
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
-        <input @click.stop="goToCheckout" class="block" type="button" value="Select Seats" />
+    <n></n>
+    <p></p>
+        <input @click.stop="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
   </div>
 </template>
 
@@ -127,5 +129,14 @@ input.isSelected {
 
 input {
   background-color: palevioletred;
+}
+
+.block {
+  padding: 10px;
+  background-color: lightgrey;
+  font-weight: bolder;
+  color: rgb(85, 7, 7);
+  border-block-end-color: darkred;
+
 }
 </style>
