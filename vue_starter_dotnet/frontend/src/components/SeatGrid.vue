@@ -21,6 +21,7 @@
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
+        <input @click="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
   </div>
 </template>
 
