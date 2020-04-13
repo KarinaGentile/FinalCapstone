@@ -78,13 +78,13 @@ CREATE TABLE [dbo].[Tickets]
 (
 	[TicketId] INT NOT NULL identity PRIMARY KEY, 
     [ShowingId] INT NOT NULL, 
-    [SeatId] INT NOT NULL, 
+    [SeatName] NVARCHAR(5) NOT NULL, 
     [PurchaseId] INT NOT NULL, 
     [Price] MONEY NOT NULL
 
 	constraint fk_ticket_showing foreign key (ShowingId) references Showings (ShowingId),
 	constraint fk_ticket_purchase foreign key (PurchaseId) references Purchases (PurchaseId),
-	constraint fk_ticket_seat foreign key (SeatId) references Seats (SeatId)
+	--constraint fk_ticket_seat foreign key (SeatId) references Seats (SeatId)
 
 )
 
@@ -602,6 +602,29 @@ values
 
 SET @todaysDate = DATEADD(DAY, 1, @todaysDate)
 SET @allStart = DATEADD(HOUR, 10, @todaysDate)
+
+select * from purchases
+select * from Tickets
+select * from users
+select * from Showings
+insert into users
+(email, password)
+values
+('a@b.com', 'password')
+
+insert into Purchases
+(UserId, DateTime, Total_Price)
+values
+(1,GETDATE(),10)
+
+insert into tickets
+(ShowingId, SeatName, PurchaseId, price) --this showing is Apr 15 at 10AM
+values
+(256, 'A1', 1, 10),
+(256, 'A2', 1, 10),
+(256, 'A3', 1, 10),
+(256, 'A4', 1, 10)
+
 commit tran
 
 
