@@ -125,6 +125,9 @@ h1 {
   font-weight: bold;
 }
 
+button {
+  font-weight: bold;
+}
 
 </style>
 
