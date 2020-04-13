@@ -26,7 +26,7 @@
       v-model.number="seniorTickets"
     />
     <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
-    <p class="estimate" v-bind:key="totalPrice">Your estimated total is ${{totalPrice}}</p>
+    <p class="estimate" v-bind:key="totalPrice">Your estimated total is {{totalPrice}} + tax</p>
     <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
     <input @click="confirmSelection" class="block" type="button" value="Confirm selection" />
   </div>
@@ -43,16 +43,20 @@ export default {
       maxChild: 9,
       maxAdult: 9,
       maxSenior: 9,
-      childPrice: 0.0,
-      adultPrice: 0.0,
-      seniorPrice: 0.0,
-      totalPrice: 0.0,
+      childPrice: 0.00,
+      adultPrice: 0.00,
+      seniorPrice: 0.00,
+      totalPrice: 0.00,
       Showings
     };
   },
   props: {
     showings: Array,
     selectedStartTime: String
+    // childPrice:Decimal,
+    // adultPrice:Decimal,
+    // seniorPrice:Decimal,
+    // totalPrice:Decimal,
   },
   methods: {
     confirmSelection() {
@@ -89,30 +93,35 @@ export default {
     );
   }
 };
-
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 function newGetTotalPrice(
   childTickets,
   adultTickets,
   seniorTickets,
   selectedStartTime
 ) {
-  let childPrice = 0;
-  let adultPrice = 0;
-  let seniorPrice = 0;
+  let childPrice = 0.00;
+  let adultPrice = 0.00;
+  let seniorPrice = 0.00;
 
   if (selectedStartTime < "12:00") {
     childPrice = 3.25 * childTickets;
     adultPrice = 6.75 * adultTickets;
-    seniorPrice = 4.0 * seniorTickets;
+    seniorPrice = 4.00 * seniorTickets;
   } else {
     childPrice = 5.25 * childTickets;
     adultPrice = 8.75 * adultTickets;
-    seniorPrice = 6.0 * seniorTickets;
+    seniorPrice = 6.00 * seniorTickets;
   }
   let totalPrice = childPrice + adultPrice + seniorPrice;
   console.log("total: " + totalPrice);
-  return totalPrice;
+  return formatter.format(totalPrice);
 }
+
 </script>
 
 <style scoped>
