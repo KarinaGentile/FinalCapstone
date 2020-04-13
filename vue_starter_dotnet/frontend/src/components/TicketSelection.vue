@@ -1,7 +1,7 @@
 <template>
   <div id="ticketInterface">
-    <h3>Please select the number and type of tickets</h3>
-    <ul>
+    <h3>Please select your tickets:</h3>
+    <ul class="flexcontainer">
     <label>Adults ($8.75):</label>
     <input
     id="Adult"
@@ -138,7 +138,25 @@ function newGetTotalPrice(
   background-color: lightgray;
   border-bottom: 2px solid black;
 }
+.flexcontainer{
+  display:flex;
+  flex-direction: column;
+align-items: center;
+justify-content: center;
+}
 
+.Adult
+{
+  flex:1;
+}
+.Child
+{
+  flex:1;
+}
+.Senior
+{
+  flex:1;
+}
 .block {
   display: block;
 }
