@@ -22,9 +22,10 @@
           <option
             v-bind:key="d"
             v-bind:value="d"
+            
             v-for="d in dropDownDates"
             aria-placeholder="Select a Date"
-          >{{d}}</option>
+          >{{d.toString().slice(0,15)}}</option>
         </select>
       </p>
       <p v-if="isDetailPage !== true" class="bold" p.message="hide">Today's Showtimes:</p>
@@ -109,7 +110,7 @@ export default {
           this.showings = json;
         })
         .then(() => {
-          window.alert(`You have selected showtimes for ${this.selectedDate}`);
+          window.alert(`You have selected showtimes for ${this.selectedDate.toString().slice(0,15)}`);
         });
     },
     formatDate(date) {
