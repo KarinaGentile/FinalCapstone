@@ -123,6 +123,10 @@ input.isSelected {
   background-color: lightskyblue;
 }
 
+.isSelected {
+background-color: lightskyblue;
+}
+
 .isAvailable {
   background-color: lightgray;
 }
