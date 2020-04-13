@@ -21,7 +21,7 @@
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
-        <input @click.stop="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
+        <input @click.stop="goToCheckout" class="block" type="button" value="Select Seats" />
   </div>
 </template>
 
