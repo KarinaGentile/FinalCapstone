@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div>
+      <section class="centerPanel">
+      <h3>Billing Information</h3>
+      <p></p>
+      <input type="text" >
+      </section>
+  </div>
 </template>
 
 <script>
