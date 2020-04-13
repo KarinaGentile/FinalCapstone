@@ -58,7 +58,11 @@ export default {
     confirmSelection() {
       console.log("Selection confirmed");
       console.log(this.selectedStartTime);
-      this.$emit("selection-confirmed");
+      if (this.totalTickets > 0) {
+        this.$emit("selection-confirmed", this.totalTickets);
+      } else {
+        window.alert("One or more tickets must be selected");
+      }
     },
     getTotalTickets() {
       this.maxAdult = 9 - (this.childTickets + this.seniorTickets);
@@ -86,7 +90,12 @@ export default {
   }
 };
 
-function newGetTotalPrice(childTickets, adultTickets, seniorTickets, selectedStartTime) {
+function newGetTotalPrice(
+  childTickets,
+  adultTickets,
+  seniorTickets,
+  selectedStartTime
+) {
   let childPrice = 0;
   let adultPrice = 0;
   let seniorPrice = 0;
