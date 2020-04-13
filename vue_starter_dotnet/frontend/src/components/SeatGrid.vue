@@ -89,10 +89,20 @@ export default {
         }
       });
       return count;
+    },
+    devModeReserveRandomSeats() {
+      this.seats.forEach(s => {
+        const rand = Math.random();
+        if (rand < 0.1) {
+          s.isAvailable = false;
+        }
+      });
     }
+
   },
   created() {
     this.seats = this.generateSeatGrid();
+    this.devModeReserveRandomSeats();
   },
   props: {
     totalTickets: Number
@@ -106,7 +116,15 @@ export default {
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
-.isSelected {
+input.isSelected {
   background-color: lightskyblue;
+}
+
+.isAvailable {
+  background-color: lightgray;
+}
+
+input {
+  background-color: palevioletred;
 }
 </style>
