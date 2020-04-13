@@ -1,8 +1,10 @@
 <template>
   <div id="ticketInterface">
     <h3>Please select the number and type of tickets</h3>
+    <ul>
     <label>Adults ($8.75):</label>
     <input
+    id="Adult"
       @change="getTotalTickets"
       type="number"
       v-bind:max="maxAdult"
@@ -11,6 +13,7 @@
     />
     <label>Children ($5.25):</label>
     <input
+    id="Child"
       @change="getTotalTickets"
       type="number"
       v-bind:max="maxChild"
@@ -19,6 +22,7 @@
     />
     <label>Seniors ($6.00):</label>
     <input
+    id="Senior"
       @change="getTotalTickets"
       type="number"
       v-bind:max="maxSenior"
@@ -29,6 +33,7 @@
     <p class="estimate" v-bind:key="totalPrice">Your estimated total is {{totalPrice}} + tax</p>
     <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
     <input @click="confirmSelection" class="block" type="button" value="Confirm selection" />
+    </ul>
   </div>
 </template>
 <script>
@@ -59,7 +64,7 @@ export default {
     // totalPrice:Decimal,
   },
   methods: {
-    confirmSelection() {
+    selectSeats() {
       console.log("Selection confirmed");
       console.log(this.selectedStartTime);
       if (this.totalTickets > 0) {
@@ -141,4 +146,6 @@ function newGetTotalPrice(
 .estimate {
   text-align: left;
 }
+
+
 </style>

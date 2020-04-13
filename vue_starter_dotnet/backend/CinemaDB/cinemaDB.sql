@@ -125,7 +125,7 @@ values
 
 (select MAX(EndTime) from Showings)
 
-SET @allStart = DATEADD(minute, datediff(minute,0,(select MAX(EndTime) from Showings)) / 15 * 15, 0)
+SET @allStart = DATEADD(minute, datediff(minute,0,(select MAX(EndTime) from Showings)) / 10 * 10, 0)
 
 insert into Showings
 (MovieId, StartTime, EndTime, TheaterId)
