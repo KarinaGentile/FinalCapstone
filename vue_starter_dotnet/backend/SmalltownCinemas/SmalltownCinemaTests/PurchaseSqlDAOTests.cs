@@ -28,5 +28,30 @@ namespace SmalltownCinemaTests
             int actual = tickets.Count;
             Assert.AreEqual(4, actual);
         }
+
+        [TestMethod]
+        public void CreateNewPurchaseTest()
+        {
+            Purchase purchase = purchaseDAO.CreateNewPurchase(3.14);
+            Assert.IsNotNull(purchase.PurchaseId);
+        }
+
+
+        [TestMethod]
+        public void CreateNewTicketsTest()
+        {
+            List<string> seatNumbers = new List<string>();
+            seatNumbers.Add("A2");
+            seatNumbers.Add("A3");
+            seatNumbers.Add("A4");
+            seatNumbers.Add("A5");
+            seatNumbers.Add("B1");
+            seatNumbers.Add("B2");
+            seatNumbers.Add("B3");
+            seatNumbers.Add("B4");
+            int actual = purchaseDAO.CreateNewTickets(4, 268, seatNumbers, 5);
+            int expected = seatNumbers.Count;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
