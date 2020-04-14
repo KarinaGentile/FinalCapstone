@@ -102,12 +102,20 @@ export default {
           s.isAvailable = false;
         }
       });
-    }
+    },
+    markReservedSeats() {
+      this.seats.forEach(seat => {
+        if (this.reservedSeats.includes(seat.seatNumber)) {
+          seat.isAvailable = false;
+        }
+      });
+     }
 
   },
   created() {
     this.seats = this.generateSeatGrid();
     // this.devModeReserveRandomSeats();
+    this.markReservedSeats();
   },
   props: {
     totalTickets: Number,
