@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     
-    <div id="nav">
+    
        
       <h1 class="welcome">Small Town Cinemas</h1>
-      
+      <div id="nav">
       <div v-if="user">
         Logged in
         <div>
@@ -12,16 +12,18 @@
         </div>
       </div>
       <div v-else>
-        <div>
+        <div class="floatright">
           <router-link :to="{name: 'login'}">Login</router-link>
         </div>
 
-        <div>
+        <div class="floatright">
           <router-link :to="{name: 'register'}">Register</router-link>
         </div>
       </div>
+      <div class="floatright">
       <router-link to="/">Home</router-link>
     </div>
+      </div>
 
     <router-view />
   </div>
@@ -100,9 +102,10 @@ header {
   text-decoration: none;
 }
 .welcome{
-   font-family: "Helvetica";
+   font-family: "Jazz", let, fantasy;
+   font-weight:bold;
   font-size:45px;
-  align-content: left;
+  align-content:center;
   outline-color: black;
    color: white;
     font-size: 50px;
@@ -150,6 +153,8 @@ button {
 align-items: center;
 justify-content: center;
 }
-
+.floatright{
+  align-content:right;
+}
 </style>
 
