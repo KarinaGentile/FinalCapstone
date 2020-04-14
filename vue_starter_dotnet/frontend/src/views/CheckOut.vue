@@ -1,11 +1,11 @@
 <template>
   <div>
       <Purchase></Purchase>
-<<<<<<< HEAD
+
 =======
       <PurchaseReceipt></PurchaseReceipt>
       <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
->>>>>>> b9dff9bba5d43aeb82cc8cf71d0e23d6a305657b
+
   </div>
 </template>
 
