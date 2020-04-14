@@ -32,7 +32,7 @@
     <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
     <p class="estimate" v-bind:key="totalPrice">Your estimated total is {{totalPrice}} + tax</p>
     <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
-    <input @click="confirmSelection" class="block" type="button" value="Confirm selection" />
+    <input @click="confirmSelection" class="block" type="button" value="Select Seats" />
     </ul>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
     // totalPrice:Decimal,
   },
   methods: {
-    selectSeats() {
+    confirmSelection() {
       console.log("Selection confirmed");
       console.log(this.selectedStartTime);
       if (this.totalTickets > 0) {
