@@ -13,6 +13,13 @@ export default {
     Purchase,
     PurchaseReceipt
   },
+  props: {
+    selectedSeatNumbers: Array,
+    movieId: Number,
+    date: String, //YYYY-MM-DD
+    startTime: String, //HH:MM
+    price: Number
+  }
 
 }
 </script>
