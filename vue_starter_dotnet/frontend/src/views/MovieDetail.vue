@@ -90,7 +90,7 @@ export default {
     },
     displaySeatGrid($event) {
       // console.log('display seats')
-      // this.getReservedSeatsByShowing();
+      this.getReservedSeatsByShowing();
       this.totalTickets = $event;
       this.areSeatsDisplayed = true;
     },
@@ -108,17 +108,6 @@ export default {
       let url = process.env.VUE_APP_REMOTE_API;
       url += `/api/purchase/${movieId}/${date}/${startTime}`;
       console.log("url to fetch from: " + url);
-      fetch(url)
-        .then(response => {
-          return response.json();
-        })
-        .then(json => {
-          this.reservedSeats = json;
-        })
-        .then(() => {
-          console.log(this.reservedSeats);
-        });
-
       console.log("end getResSeats");
     }
   },

@@ -21,9 +21,9 @@
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
-
+    
     <p></p>
-    <input @click.stop="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
+        <input @click.stop="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
   </div>
 </template>
 
@@ -77,14 +77,11 @@ export default {
       return arr;
     },
     seatClicked(id) {
-      let seatIndex = this.seats.findIndex(seat => seat.seatId === id);
+      let seatIndex = this.seats.findIndex(seat => (seat.seatId === id));
       let seat = this.seats[seatIndex];
-      if (
-        seat.isAvailable &&
-        (this.totalTickets > this.numSeatsSelected || seat.isSelected)
-      ) {
+      if (seat.isAvailable && (this.totalTickets > this.numSeatsSelected || seat.isSelected)) {
         seat.isSelected = !seat.isSelected;
-        this.numSeatsSelected = this.countSelectedSeats();
+        this.numSeatsSelected = this.countSelectedSeats()
       }
     },
     countSelectedSeats() {
@@ -103,19 +100,12 @@ export default {
           s.isAvailable = false;
         }
       });
-    },
-    markReservedSeats() {
-      this.seats.forEach(seat => {
-        if (this.reservedSeats.includes(seat.seatNumber)) {
-          seat.isAvailable = false;
-        }
-      });
     }
+
   },
   created() {
     this.seats = this.generateSeatGrid();
     // this.devModeReserveRandomSeats();
-    this.markReservedSeats();
   },
   props: {
     totalTickets: Number,
@@ -135,7 +125,7 @@ input.isSelected {
 }
 
 .isSelected {
-  background-color: lightskyblue;
+background-color: lightskyblue;
 }
 
 .isAvailable {
@@ -152,5 +142,6 @@ input {
   font-weight: bolder;
   color: rgb(85, 7, 7);
   border-block-end-color: darkred;
+
 }
 </style>

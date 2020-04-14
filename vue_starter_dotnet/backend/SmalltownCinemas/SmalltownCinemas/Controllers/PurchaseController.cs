@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmalltownCinemas.DAL;
-using SmalltownCinemas.Models;
 
 namespace SmalltownCinemas.Controllers
 {
@@ -36,13 +35,7 @@ namespace SmalltownCinemas.Controllers
         [HttpGet("{movieId}/{date}/{startTime}")]
         public IActionResult GetReservedSeats(int movieId, string date, string startTime)
         {
-            List<Ticket> tickets = purchaseDAO.GetReservedSeats(movieId, date, startTime);
-            List<string> reservedSeatNumbers = new List<string>();
-            foreach (var t in tickets)
-            {
-                reservedSeatNumbers.Add(t.SeatName);
-            }
-            return new JsonResult(reservedSeatNumbers);
+            return Ok();
         }
     }
 }
