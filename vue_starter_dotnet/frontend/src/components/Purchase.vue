@@ -5,23 +5,26 @@
       <p></p>
       <ul class="flexcontainer">
       <label>First Name:</label>
-      <input id="firstName" type="text" />
+      <input id="firstName" type="text" required=true />
       <label>Last Name:</label>
-      <input id="lastName" type="text" />
+      <input id="lastName" type="text" required=true/>
       <label>Email:</label>
-      <input id="email" type="text" />
+      <input id="email" type="text" required=true email=true/>
       <label>Street Address:</label>
-      <input id="streetAddress" type="text" />
+      <input id="streetAddress" type="text" required=true/>
       <label>City:</label>
-      <input id="city" type="text" />
+      <input id="city" type="text" required=true/>
       <label>State:</label>
-      <input id="state" type="text" />
+      <input id="state" type="text" required=true/>
       <label>Zip Code:</label>
-      <input id="zipcode" type="text" />
+      <input id="zipcode" type="text" required=true/>
       <label>Country:</label>
-      <input id="country" type="text" />
+      <input id="country" type="text" required=true/>
       </ul>
           <input @click="buyTickets" class="block" type="button" value="Buy Tickets" />
+          <!--A purchase receipt generates using the above inputs, 
+          seat(s) selected, # & type of tickets selected, showtime & movie
+          Need to figure out if this should be a new view or the component loads below? -->
     </section>
   </div>
 </template>
