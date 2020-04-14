@@ -39,6 +39,16 @@ export default {
       zipcode: "",
       country: ""
     };
+  },
+  methods: {
+    buyTickets(){
+      alert("buy the tickets")
+      this.$router.push({
+        name:"receipt",
+        params:{id:1} //replace this with the actual purchaseId
+        
+      })
+    }
   }
 };
 </script>

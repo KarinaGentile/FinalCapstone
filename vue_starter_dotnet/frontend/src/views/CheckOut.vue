@@ -1,17 +1,15 @@
 <template>
   <div>
       <Purchase></Purchase>
-      <PurchaseReceipt></PurchaseReceipt>
   </div>
 </template>
 
 <script>
 import Purchase from "../components/Purchase";
-import PurchaseReceipt from "../components/PurchaseReceipt";
 export default {
     components: {
-    Purchase,
-    PurchaseReceipt
+    Purchase
+
   },
   props: {
     selectedSeatNumbers: Array,
@@ -19,7 +17,7 @@ export default {
     date: String, //YYYY-MM-DD
     startTime: String, //HH:MM
     price: Number
-  }
+  },
 
 }
 </script>

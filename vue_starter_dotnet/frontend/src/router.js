@@ -6,6 +6,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import MovieDetail from './views/MovieDetail.vue'
 import CheckOut from './views/CheckOut.vue'
+import PurchaseReceipt from './views/PurchaseReceipt.vue'
 Vue.use(Router)
 
 /**
@@ -57,6 +58,14 @@ const router = new Router({
       path: "/movies/:id/checkout",
       name: "check-out",
       component: CheckOut,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/movies/receipt/:id",
+      name: "receipt",
+      component: PurchaseReceipt,
       meta: {
         requiresAuth: false
       }
