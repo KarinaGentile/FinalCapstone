@@ -14,7 +14,7 @@
       <input id="streetAddress" type="text" />
       <label>City:</label>
       <input id="city" type="text" />
-      <label>Last Name:</label>
+      <label>State:</label>
       <input id="state" type="text" />
       <label>Zip Code:</label>
       <input id="zipcode" type="text" />
