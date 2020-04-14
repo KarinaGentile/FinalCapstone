@@ -22,6 +22,9 @@
       <input id="country" type="text" required=true/>
       </ul>
           <input @click="buyTickets" class="block" type="button" value="Buy Tickets" />
+          <!--A purchase receipt generates using the above inputs, 
+          seat(s) selected, # & type of tickets selected, showtime & movie
+          Need to figure out if this should be a new view or the component loads below? -->
     </section>
   </div>
 </template>

@@ -2,6 +2,7 @@
   <div>
       <Purchase></Purchase>
       <PurchaseReceipt></PurchaseReceipt>
+      <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
   </div>
 </template>
 
