@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import MovieDetail from './views/MovieDetail.vue'
+import CheckOut from './views/CheckOut.vue'
 Vue.use(Router)
 
 /**
@@ -48,6 +49,14 @@ const router = new Router({
       path: "/movies/:id",
       name: "movie-detail",
       component: MovieDetail,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/movies/:id/checkout",
+      name: "check-out",
+      component: CheckOut,
       meta: {
         requiresAuth: false
       }
