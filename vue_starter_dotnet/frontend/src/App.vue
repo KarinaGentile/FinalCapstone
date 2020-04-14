@@ -1,6 +1,10 @@
 <template>
   <div id="app">
+    
     <div id="nav">
+       
+      <h1 class="welcome">Small Town Cinemas</h1>
+      
       <div v-if="user">
         Logged in
         <div>
@@ -95,6 +99,18 @@ header {
 .nav li a:hover {
   text-decoration: none;
 }
+.welcome{
+   font-family: "Helvetica";
+  font-size:45px;
+  align-content: left;
+  outline-color: black;
+   color: white;
+    font-size: 50px;
+    text-shadow: -1px 1px 2px #000,
+                  1px 1px 2px #000,
+                  1px -1px 0 #000,
+                  -1px -1px 0 #000;
+}
 
 .fas {
   margin-right: 4px;
@@ -127,6 +143,12 @@ h1 {
 
 button {
   font-weight: bold;
+}
+.flexcontainer{
+  display:flex;
+  flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 </style>
