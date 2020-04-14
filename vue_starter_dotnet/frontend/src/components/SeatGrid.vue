@@ -13,15 +13,15 @@
       <input
         type="button"
         class="seatButton"
-        v-bind:key="s.seatId"
+        v-bind:key="s.seatNumber"
         v-for="s in seats"
         v-bind:value="s.seatNumber"
-        v-bind:id="s.seatId"
+        v-bind:id="s.seatNumber"
         @click.stop="seatClicked(s.seatId)"
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
-    <n></n>
+    
     <p></p>
         <input @click.stop="goToCheckout" class="block" type="button" value="Proceed to CheckOut" />
   </div>
@@ -73,7 +73,7 @@ export default {
           row = "B";
         }
       }
-      console.table(arr);
+      // console.table(arr);
       return arr;
     },
     seatClicked(id) {
@@ -105,10 +105,11 @@ export default {
   },
   created() {
     this.seats = this.generateSeatGrid();
-    this.devModeReserveRandomSeats();
+    // this.devModeReserveRandomSeats();
   },
   props: {
-    totalTickets: Number
+    totalTickets: Number,
+    reservedSeats: Array
   }
 };
 </script>

@@ -9,6 +9,6 @@ namespace SmalltownCinemas.DAL
     public interface IPurchaseDAO
     {
         List<Ticket> GetReservedSeatsByShowingId(int showingId);
-
+        List<Ticket> GetReservedSeats(int movieId, string date, string startTime);
     }
 }

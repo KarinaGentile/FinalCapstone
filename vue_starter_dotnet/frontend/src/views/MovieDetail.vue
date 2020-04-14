@@ -13,11 +13,21 @@
           v-bind:mGenre="this.movie.genre"
           v-bind:mId="this.movie.movieId"
           :isDetailPage="true"
-           v-on:display-tickets="displayTickets"
+          v-on:display-tickets="displayTickets"
+          v-on:new-date-selected="changeSelectedDate"
         />
-        <ticket-selection v-on:selection-confirmed="displaySeatGrid" v-if="areTicketsDisplayed" v-bind:selectedStartTime="selectedStartTime" v-bind:key="selectedStartTime"></ticket-selection>
+        <ticket-selection
+          v-on:selection-confirmed="displaySeatGrid"
+          v-if="areTicketsDisplayed"
+          v-bind:selectedStartTime="selectedStartTime"
+          v-bind:key="selectedStartTime"
+        ></ticket-selection>
 
-        <seat-grid v-if="areSeatsDisplayed" v-bind:totalTickets="totalTickets"></seat-grid>
+        <seat-grid
+          v-if="areSeatsDisplayed"
+          v-bind:totalTickets="totalTickets"
+          v-bind:reservedSeats="reservedSeats"
+        ></seat-grid>
       </div>
     </section>
   </div>
@@ -46,7 +56,9 @@ export default {
       areTicketsDisplayed: false,
       areSeatsDisplayed: false,
       selectedStartTime: "",
-      totalTickets: 0
+      selectedDate: "",
+      totalTickets: 0,
+      reservedSeats: []
     };
   },
   components: {
@@ -66,21 +78,43 @@ export default {
   },
   methods: {
     displayTickets($event) {
-      console.log("display tickets");
-      
+      // console.log("display tickets");
+
       this.selectedStartTime = $event;
       this.areTicketsDisplayed = true;
+      this.getReservedSeatsByMovieIdAndDateAndStartTime(
+        this.movie["movieId"],
+        this.selectedDate,
+        this.selectedStartTime
+      );
     },
     displaySeatGrid($event) {
-      console.log('display seats')
+      // console.log('display seats')
+      this.getReservedSeatsByShowing();
       this.totalTickets = $event;
       this.areSeatsDisplayed = true;
+    },
+    changeSelectedDate($event) {
+      console.log("received changeSelectedDateEvent with payload: " + $event);
+      this.selectedDate = $event;
+    },
+    getReservedSeatsByMovieIdAndDateAndStartTime(movieId, date, startTime) {
+      // fetch
+      console.log("Begin getReservedSeats");
+      console.log("movieId: " + movieId);
+      console.log("date: " + date);
+      console.log("startTime: " + startTime);
+
+      let url = process.env.VUE_APP_REMOTE_API;
+      url += `/api/purchase/${movieId}/${date}/${startTime}`;
+      console.log("url to fetch from: " + url);
+      console.log("end getResSeats");
     }
   },
   created() {
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/movies/${this.$route.params.id}`;
-    console.log("Generated url: " + url);
+    // console.log("Generated url: " + url);
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -91,13 +125,13 @@ export default {
         return response.json();
       })
       .then(json => {
-        console.table(json);
+        // console.table(json);
         this.movie = json;
         this.displayKey += 1;
-        console.log("display key updated, should refresh");
+        // console.log("display key updated, should refresh");
       });
 
-    console.log(this.movie);
+    // console.log(this.movie);
   }
 };
 </script>

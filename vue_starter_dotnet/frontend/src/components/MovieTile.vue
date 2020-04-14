@@ -1,9 +1,9 @@
 <template>
-  <div id="movieTile" >
+  <div id="movieTile">
     <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
       <img class="poster" v-bind:src="mPoster" />
     </router-link>
-    <div id="descriptionBox" v-on:showing-selected="passShowSelEvent" >
+    <div id="descriptionBox" v-on:showing-selected="passShowSelEvent">
       <router-link v-bind:to="{name:'movie-detail', params:{id:mId}}">
         <h3>{{mTitle}}</h3>
       </router-link>
@@ -22,7 +22,6 @@
           <option
             v-bind:key="d"
             v-bind:value="d"
-            
             v-for="d in dropDownDates"
             aria-placeholder="Select a Date"
           >{{d.toString().slice(0,15)}}</option>
@@ -69,33 +68,31 @@ export default {
     Showings
   },
   methods: {
-    
     passShowSelEvent($event) {
-      console.log("got showing selected event");
-      console.log($event)
-      this.$emit("display-tickets",$event);
-      
+      console.log("got showing selected event: " + $event);
+      this.$emit("display-tickets", $event);
     },
     fillInDate() {
       let today = new Date();
-      console.log(today);
+      // console.log(today);
       for (let i = 0; i < 7; i++) {
         let d = new Date();
         d.setDate(today.getDate() + i);
         this.dropDownDates[i] = d;
         // d.setDate(d.getDate() + i);
       }
-      console.log(this.dropDownDates);
+      // console.log(this.dropDownDates);
     },
     newDateSelected() {
-      console.log("new date selected");
-      console.log(this.selectedDate);
+      // console.log("new date selected");
+      // console.log(this.selectedDate);
       let searchDate = this.formatDate(this.selectedDate);
-      console.log(searchDate);
+      console.log("New date selected: " + searchDate);
+      this.$emit('new-date-selected', searchDate);
       let url = process.env.VUE_APP_REMOTE_API;
       url += `/api/showings/${this.mId}/${searchDate}`;
       // url += `/api/showings/2`;
-      console.log("Generated url: " + url);
+      // console.log("Generated url: " + url);
       fetch(url)
         .then(response => {
           if (!response.ok) {
@@ -110,7 +107,11 @@ export default {
           this.showings = json;
         })
         .then(() => {
-          window.alert(`You have selected showtimes for ${this.selectedDate.toString().slice(0,15)}`);
+          window.alert(
+            `You have selected showtimes for ${this.selectedDate
+              .toString()
+              .slice(0, 15)}`
+          );
         });
     },
     formatDate(date) {
@@ -118,14 +119,14 @@ export default {
         month = "" + (d.getMonth() + 1),
         day = "" + d.getDate(),
         year = d.getFullYear();
-      console.log("formatted date: " + year + month + day);
+      // console.log("formatted date: " + year + month + day);
       // console.log('format: '+month);
       if (month.length < 2) {
         month = "0" + month;
       }
       if (day.length < 2) {
         day = "0" + day;
-        console.log([year, month, day].join("-"));
+        // console.log([year, month, day].join("-"));
       }
       return `${year}-${month}-${day}`;
     }
@@ -133,11 +134,11 @@ export default {
 
   created() {
     this.fillInDate();
-    console.log(this.mId);
+    // console.log(this.mId);
     let url = process.env.VUE_APP_REMOTE_API;
     url += `/api/showings/${this.mId}`;
     // url += `/api/showings/2`;
-    console.log("Generated url: " + url);
+    // console.log("Generated url: " + url);
     fetch(url)
       .then(response => {
         if (!response.ok) {

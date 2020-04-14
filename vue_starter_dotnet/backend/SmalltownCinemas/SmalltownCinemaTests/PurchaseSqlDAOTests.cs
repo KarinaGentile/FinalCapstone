@@ -20,5 +20,13 @@ namespace SmalltownCinemaTests
             int actual = tickets.Count;
             Assert.IsTrue(actual > 0);
         }
+
+        [TestMethod]
+        public void GetReservedSeatsTest()
+        {
+            List<Ticket> tickets = purchaseDAO.GetReservedSeats(1,"2020-04-15","10:00");
+            int actual = tickets.Count;
+            Assert.AreEqual(4, actual);
+        }
     }
 }

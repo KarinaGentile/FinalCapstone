@@ -31,5 +31,11 @@ namespace SmalltownCinemas.Controllers
         {
             return new JsonResult(purchaseDAO.GetReservedSeatsByShowingId(showingId));
         }
+
+        [HttpGet("{movieId}/{date}/{startTime}")]
+        public IActionResult GetReservedSeats(int movieId, string date, string startTime)
+        {
+            return Ok();
+        }
     }
 }

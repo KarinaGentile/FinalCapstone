@@ -79,10 +79,10 @@ export default {
       this.maxSenior = 9 - (this.childTickets + this.adultTickets);
       this.totalTickets =
         this.childTickets + this.adultTickets + this.seniorTickets;
-      console.log("children: " + this.childTickets);
-      console.log("adult: " + this.adultTickets);
-      console.log("senior: " + this.seniorTickets);
-      console.log("total: " + this.totalTickets);
+      // console.log("children: " + this.childTickets);
+      // console.log("adult: " + this.adultTickets);
+      // console.log("senior: " + this.seniorTickets);
+      // console.log("total: " + this.totalTickets);
       this.totalPrice = newGetTotalPrice(
         this.childTickets,
         this.adultTickets,
