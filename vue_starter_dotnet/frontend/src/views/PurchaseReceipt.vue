@@ -1,31 +1,18 @@
 <template>
   <div>
-       
-    
-    <section class="centeredPanel"
-    v-bind:key="this.receipt.purchaseId"
-    v-bind:rNumOfTickets="this.receipt.numTickets"
-    v-bind:rCustomer="this.receipt.customerName"
-    v-bind:rPrice="this.receipt.price"
-    v-bind:rTheater="this.receipt.theater"
-    v-bind:rStartTime="this.receipt.startTime"
-    v-bind:rMovieName="this.receipt.movieName"
-    v-bind:rSeatNumbers="this.receipt.seatNumbers"
-    v-bind:rPurchaseTimeStamp="this.receipt.purchaseTimeStamp">
-    <h2>Receipt for Purchase {{purchaseId}}</h2>
-    <ul>
-      <li>{{purchaseId}}</li>
-      <li>{{numTickets}}</li>
-      <li>{{customerName}}</li>
-      <li>{{price}}</li>
-      <li>{{theater}}</li>
-      <li>{{startTime}}</li>
-      <li>{{movieName}}</li>
-      <li>{{seatNumbers}}</li>
-      <li>{{purchaseTimeStamp}}</li>
-
-    </ul>
-    
+    <section class="centeredPanel">
+      <h2>Receipt for Purchase #: {{purchaseId}}</h2>
+      <p>Number of tickets: {{receipt.numTickets}}</p>
+      <p>Customer name: {{receipt.customerName}}</p>
+      <p>Total price: {{receipt.price}}</p>
+      <p>Theater number: {{receipt.theater}}</p>
+      <p>Start time: {{receipt.startTime}}</p>
+      <p>Movie title: {{receipt.movieName}}</p>
+      <ul>
+        <p>Seat numbers</p>
+        <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
+      </ul>
+      <p>Purchase timestamp: {{receipt.purchaseTimeStamp}}</p>
     </section>
   </div>
 </template>
@@ -49,10 +36,7 @@ export default {
       movieId: 0,
       userId: 0,
       theaterId: 0,
-      showingId: 0,
-      
-
-
+      showingId: 0
     };
   },
   created() {
