@@ -33,6 +33,7 @@ namespace SmalltownCinemas
             services.AddTransient<IMovieDAO, MovieSqlDAO>(x => new MovieSqlDAO(Configuration.GetConnectionString("Movies")));
             services.AddTransient<IShowingDAO, ShowingSqlDAO>(x => new ShowingSqlDAO(Configuration.GetConnectionString("Movies")));
             services.AddTransient<IPurchaseDAO, PurchaseSqlDAO>(x => new PurchaseSqlDAO(Configuration.GetConnectionString("Movies")));
+            services.AddTransient<IUserDAO, UserSqlDAO>(x => new UserSqlDAO(Configuration.GetConnectionString("Movies")));
 
             services.AddCors(options =>
             {
