@@ -1,11 +1,18 @@
 <template>
   <div>
-       <section class="centeredPanel">
+       
     <p>Receipt for purchase {{purchaseId}}</p>
     <section 
     v-bind:key="this.receipt.purchaseId"
+    v-bind:rNumOfTickets="this.receipt.numTickets"
+    v-bind:rCustomer="this.receipt.customerName"
     v-bind:rPrice="this.receipt.price"
-    v-bind:rCustomer="this.receipt.customerName">
+    v-bind:rTheater="this.receipt.theater"
+    v-bind:rStartTime="this.receipt.startTime"
+    v-bind:rMovieName="this.receipt.movieName"
+    v-bind:rSeatNumbers="this.receipt.seatNumbers"
+    v-bind:rPurchaseTimeStamp="this.receipt.purchaseTimeStamp">
+    
     </section>
   </div>
 </template>
