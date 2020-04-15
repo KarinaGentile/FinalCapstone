@@ -15,8 +15,9 @@ namespace SmalltownCinemaTests
         [TestMethod]
         public void GetEmailByUserTest()
         {
-            userDAO.GetEmailByUser("");
-
+            int userId = 0;
+            userId = userDAO.GetUserIdByEmailAddress("a@b.com");
+            Assert.IsTrue(userId != 0);
         }
     }
 }

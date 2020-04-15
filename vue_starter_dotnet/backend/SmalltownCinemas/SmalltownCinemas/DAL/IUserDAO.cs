@@ -7,6 +7,6 @@ namespace SmalltownCinemas.DAL
 {
     public interface IUserDAO
     {
-        int GetEmailByUser(string email);
+        int GetUserIdByEmailAddress(string email);
     }
 }

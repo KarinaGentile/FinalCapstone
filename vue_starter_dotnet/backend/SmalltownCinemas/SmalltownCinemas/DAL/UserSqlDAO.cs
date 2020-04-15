@@ -14,7 +14,7 @@ namespace SmalltownCinemas.DAL
         {
             this.connectionString = connString;
         }
-        public int GetEmailByUser(string email)
+        public int GetUserIdByEmailAddress(string email)
         {
             int userId = 0;
             try
@@ -30,10 +30,8 @@ namespace SmalltownCinemas.DAL
                     if (rdr.Read())
                     {
                         userId = Convert.ToInt32(rdr["userId"]);
-
                     }
                 }
-
             }
             catch (Exception)
             {
