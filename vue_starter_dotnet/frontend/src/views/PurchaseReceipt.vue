@@ -1,8 +1,8 @@
 <template>
   <div>
        
-    <p>Receipt for purchase {{purchaseId}}</p>
-    <section 
+    
+    <section class="centeredPanel"
     v-bind:key="this.receipt.purchaseId"
     v-bind:rNumOfTickets="this.receipt.numTickets"
     v-bind:rCustomer="this.receipt.customerName"
@@ -12,6 +12,7 @@
     v-bind:rMovieName="this.receipt.movieName"
     v-bind:rSeatNumbers="this.receipt.seatNumbers"
     v-bind:rPurchaseTimeStamp="this.receipt.purchaseTimeStamp">
+    <h2>Receipt for Purchase {{purchaseId}}</h2>
     <ul>
       <li>{{purchaseId}}</li>
       <li>{{numTickets}}</li>

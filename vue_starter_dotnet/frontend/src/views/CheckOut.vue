@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Purchase></Purchase>
+    <Purchase v-bind:showtime="startTime"></Purchase>
 
     <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
   </div>

@@ -55,6 +55,11 @@ export default {
         });
       }
     }
+  },
+  props:{
+    totalTickets:Number,
+    movieName:String,
+    showtime:String
   }
 };
 </script>
