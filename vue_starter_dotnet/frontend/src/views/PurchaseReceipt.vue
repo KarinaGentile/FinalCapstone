@@ -12,6 +12,18 @@
     v-bind:rMovieName="this.receipt.movieName"
     v-bind:rSeatNumbers="this.receipt.seatNumbers"
     v-bind:rPurchaseTimeStamp="this.receipt.purchaseTimeStamp">
+    <ul>
+      <li>{{purchaseId}}</li>
+      <li>{{numTickets}}</li>
+      <li>{{customerName}}</li>
+      <li>{{price}}</li>
+      <li>{{theater}}</li>
+      <li>{{startTime}}</li>
+      <li>{{movieName}}</li>
+      <li>{{seatNumbers}}</li>
+      <li>{{purchaseTimeStamp}}</li>
+
+    </ul>
     
     </section>
   </div>
