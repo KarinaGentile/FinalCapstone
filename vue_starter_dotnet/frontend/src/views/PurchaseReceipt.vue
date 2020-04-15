@@ -2,6 +2,10 @@
   <div>
        <section class="centeredPanel">
     <p>Receipt for purchase {{purchaseId}}</p>
+    <section 
+    v-bind:key="this.receipt.purchaseId"
+    v-bind:rPrice="this.receipt.price"
+    v-bind:rCustomer="this.receipt.customerName">
     </section>
   </div>
 </template>
@@ -11,8 +15,8 @@ export default {
   name: "PurchaseReceipt",
   data() {
     return {
-      purchaseId: 0,
       receipt: {
+        purchaseId: 1,
         numTickets: 2,
         customerName: "John Movie",
         price: 100.0,
