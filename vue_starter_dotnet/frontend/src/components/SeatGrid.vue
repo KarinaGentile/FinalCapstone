@@ -24,7 +24,7 @@
     
     <p></p>
     
-        <router-link v-if="totalTickets === numSeatsSelected" v-bind:to="{name:'check-out'}"><input class="block" type="button" value="Check Out" /></router-link>
+        <router-link v-if="totalTickets === numSeatsSelected" v-bind:to="{name:'check-out', params: {id: movieId, selectedSeats: seatNumbers}}"><input class="block" type="button" value="Check Out" /></router-link>
   </div>
 </template>
 
@@ -35,6 +35,7 @@ export default {
       seats: [
         { seatId: 0, seatNumber: "A1", isAvailable: true, isSelected: false }
       ],
+      seatNumbers: ["A1", "A2"], // hardcoded
       numSeatsSelected: 0
     };
   },
@@ -118,7 +119,9 @@ export default {
   },
   props: {
     totalTickets: Number,
-    reservedSeats: Array
+    reservedSeats: Array,
+    movieId: Number,
+    date: String
   }
 };
 </script>

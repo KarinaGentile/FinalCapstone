@@ -27,6 +27,7 @@
           v-if="areSeatsDisplayed"
           v-bind:totalTickets="totalTickets"
           v-bind:reservedSeats="reservedSeats"
+          :movieId="movie.movieId"
         ></seat-grid>
       </div>
     </section>
