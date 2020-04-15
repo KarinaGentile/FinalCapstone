@@ -1,6 +1,8 @@
 <template>
   <div>
+       <section class="centeredPanel">
     <p>Receipt for purchase {{purchaseId}}</p>
+    </section>
   </div>
 </template>
 

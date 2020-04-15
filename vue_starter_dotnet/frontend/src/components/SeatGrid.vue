@@ -26,9 +26,7 @@
         <router-link v-bind:to="{name:'check-out'}"><input class="block" type="button" value="Proceed to CheckOut" /></router-link>
   </div>
 </template>
-<!-- 
-<input @click.stop="goToCheckout"
--->
+
 <script>
 export default {
   data() {
