@@ -49,6 +49,7 @@ export default {
     buyTickets() {
       if (this.firstName != "" && this.lastName !="" && this.email !="" && this.state !="" && this.zipcode !="" && this.country !="") {
         alert("You have selected {{totalTickets}} tickets for {{movieName}} at {{showtime}}"); 
+        window.alert(`You have selected ${this.totalTickets} tickets for ${this.movieName} at ${this.showtime}`); 
         this.$router.push({
           name: "receipt",
           params: { id: 1 } //replace this with the actual purchaseId
