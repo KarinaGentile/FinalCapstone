@@ -14,11 +14,11 @@
       </div>
       <div v-else>
         <div class="floatright">
-          <router-link :to="{name: 'login'}">Login</router-link>
+          <router-link :to="{name: 'login'}"></router-link>
         </div>
 
         <div class="floatright">
-          <router-link :to="{name: 'register'}">Register</router-link>
+          <router-link :to="{name: 'register'}"></router-link>
         </div>
       </div>
       <div class="floatright">

@@ -106,13 +106,13 @@ export default {
           // console.table(json);
           this.showings = json;
         })
-        .then(() => {
-          window.alert(
-            `You have selected showtimes for ${this.selectedDate
-              .toString()
-              .slice(0, 15)}`
-          );
-        });
+        // .then(() => {
+        //   window.alert(
+        //     `You have selected showtimes for ${this.selectedDate
+        //       .toString()
+        //       .slice(0, 15)}`
+        //   );
+        // });
     },
     formatDate(date) {
       let d = new Date(date),
