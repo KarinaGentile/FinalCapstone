@@ -1,20 +1,16 @@
 <template>
   <div>
-      <Purchase></Purchase>
+    <Purchase></Purchase>
 
-=======
-      <PurchaseReceipt></PurchaseReceipt>
-      <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
-
+    <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
   </div>
 </template>
 
 <script>
 import Purchase from "../components/Purchase";
 export default {
-    components: {
+  components: {
     Purchase
-
   },
   props: {
     selectedSeatNumbers: Array,
@@ -22,11 +18,9 @@ export default {
     date: String, //YYYY-MM-DD
     startTime: String, //HH:MM
     price: Number
-  },
-
-}
+  }
+};
 </script>
 
 <style>
-
 </style>

@@ -625,6 +625,25 @@ values
 (256, 'A3', 1, 10),
 (256, 'A4', 1, 10)
 
+insert into Purchases
+(UserId,DateTime,Total_Price)
+values
+(1,GETDATE(),10)
+select @@identity
+
+declare @newPurchId int = (select max(purchaseId) from Purchases)
+declare @showId int = 261
+
+insert into tickets
+(ShowingId, SeatName, PurchaseId, Price)
+values(@showId, 'B1', @newPurchId,5)
+,(@showId, 'B2', @newPurchId,5)
+,(@showId, 'B3', @newPurchId,5)
+,(@showId, 'F11', @newPurchId,5)
+,(@showId, 'F12', @newPurchId,5)
+,(@showId, 'C14', @newPurchId,5)
+,(@showId, 'C15', @newPurchId,5)
+
 commit tran
 
 

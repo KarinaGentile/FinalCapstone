@@ -10,7 +10,7 @@
           <label>Last Name:</label>
           <input id="lastName" type="text" required v-model="lastName" />
           <label>Email:</label>
-          <input id="email" type="text" [email] required v-model="email" />
+          <input id="email" type="text" required v-model="email" />
           <label>Street Address:</label>
           <input id="streetAddress" type="text" required="true" />
           <label>City:</label>

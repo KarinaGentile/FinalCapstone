@@ -44,5 +44,7 @@ namespace SmalltownCinemas.Controllers
             }
             return new JsonResult(seats);
         }
+
+        //[HttpPost("")]
     }
 }
