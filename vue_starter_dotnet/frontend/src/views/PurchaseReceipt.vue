@@ -13,15 +13,22 @@ export default {
     return {
       purchaseId: 0,
       receipt: {
-        numTickets: 0,
-        customerName: "",
-        price: 0.0,
-        theatre: "",
-        startTime: "",
-        movieName: "",
-        seatNumbers: [],
-        purchaseTimeStamp: ""
-      }
+        numTickets: 2,
+        customerName: "John Movie",
+        price: 100.0,
+        theater: "1",
+        startTime: "10:00 am April 16th, 2020",
+        movieName: "Wreck-it ralph",
+        seatNumbers: ["F1", "G4"],
+        purchaseTimeStamp: "11:10 am April 15th, 2020"
+      },
+      movieId: 0,
+      userId: 0,
+      theaterId: 0,
+      showingId: 0,
+      
+
+
     };
   },
   created() {
