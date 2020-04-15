@@ -47,4 +47,7 @@ export default {
 </script>
 
 <style>
+.centeredPanel{
+  position: relative;
+}
 </style>
