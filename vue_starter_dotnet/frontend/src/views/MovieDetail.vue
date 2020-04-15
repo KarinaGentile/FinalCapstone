@@ -28,6 +28,9 @@
           v-bind:totalTickets="totalTickets"
           v-bind:reservedSeats="reservedSeats"
           :movieId="movie.movieId"
+          :date="selectedDate"
+          :startTime="selectedStartTime"
+          :totalPrice="totalPrice"
         ></seat-grid>
       </div>
     </section>
@@ -59,7 +62,8 @@ export default {
       selectedStartTime: "",
       selectedDate: "",
       totalTickets: 0,
-      reservedSeats: []
+      reservedSeats: [],
+      totalPrice: 0
     };
   },
   components: {
@@ -89,11 +93,16 @@ export default {
         this.selectedStartTime
       );
     },
-    displaySeatGrid($event) {
+    displaySeatGrid($event, price) {
       // console.log('display seats')
       // this.getReservedSeatsByShowing();
+      console.log('display seat grid event in movie detail: start log')
+      console.log('event: '+$event)
+      console.log('price: '+price)
+      console.log('display seat grid event in movie detail: end log')
       this.totalTickets = $event;
       this.areSeatsDisplayed = true;
+      this.totalPrice = price;
     },
     changeSelectedDate($event) {
       console.log("received changeSelectedDateEvent with payload: " + $event);

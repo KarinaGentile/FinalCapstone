@@ -21,10 +21,15 @@
         v-bind:class="{isAvailable: s.isAvailable, isSelected: s.isSelected}"
       />
     </div>
-    
+
     <p></p>
-    
-        <router-link v-if="totalTickets === numSeatsSelected" v-bind:to="{name:'check-out', params: {id: movieId, selectedSeats: seatNumbers}}"><input class="block" type="button" value="Check Out" /></router-link>
+
+    <router-link
+      v-if="totalTickets === numSeatsSelected"
+      v-bind:to="{name:'check-out', params: {id: movieId, selectedSeats: seatNumbers, date: date, startTime: startTime, price: totalPrice}}"
+    >
+      <input class="block" type="button" value="Check Out" />
+    </router-link>
   </div>
 </template>
 
@@ -35,9 +40,20 @@ export default {
       seats: [
         { seatId: 0, seatNumber: "A1", isAvailable: true, isSelected: false }
       ],
-      seatNumbers: ["A1", "A2"], // hardcoded
+      // seatNumbers: "A1-A2", // hardcoded
       numSeatsSelected: 0
     };
+  },
+  computed: {
+    seatNumbers: function () {
+      let str = "";
+      this.seats.forEach(s => {
+        if (s.isSelected) {
+          str += `${s.seatNumber}-`
+        }
+      });
+      return str;
+    }
   },
   methods: {
     generateSeatGrid() {
@@ -79,12 +95,16 @@ export default {
       return arr;
     },
     seatClicked(id) {
-      let seatIndex = this.seats.findIndex(seat => (seat.seatId === id));
+      let seatIndex = this.seats.findIndex(seat => seat.seatId === id);
       let seat = this.seats[seatIndex];
-      if (seat.isAvailable && (this.totalTickets > this.numSeatsSelected || seat.isSelected)) {
+      if (
+        seat.isAvailable &&
+        (this.totalTickets > this.numSeatsSelected || seat.isSelected)
+      ) {
         seat.isSelected = !seat.isSelected;
-        this.numSeatsSelected = this.countSelectedSeats()
+        this.numSeatsSelected = this.countSelectedSeats();
       }
+      console.log("seatgrid price total: " + this.totalPrice);
     },
     countSelectedSeats() {
       let count = 0;
@@ -109,8 +129,7 @@ export default {
           seat.isAvailable = false;
         }
       });
-     }
-
+    }
   },
   created() {
     this.seats = this.generateSeatGrid();
@@ -121,7 +140,9 @@ export default {
     totalTickets: Number,
     reservedSeats: Array,
     movieId: Number,
-    date: String
+    date: String,
+    startTime: String,
+    totalPrice: Number
   }
 };
 </script>
@@ -137,7 +158,7 @@ input.isSelected {
 }
 
 .isSelected {
-background-color: lightskyblue;
+  background-color: lightskyblue;
 }
 
 .isAvailable {
@@ -154,6 +175,5 @@ input {
   font-weight: bolder;
   color: rgb(85, 7, 7);
   border-block-end-color: darkred;
-
 }
 </style>

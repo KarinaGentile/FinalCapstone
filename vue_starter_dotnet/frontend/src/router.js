@@ -55,7 +55,7 @@ const router = new Router({
       }
     },
     {
-      path: "/movies/:id/checkout",
+      path: "/movies/:id/checkout/:date/:startTime/:selectedSeats/:price",
       name: "check-out",
       component: CheckOut,
       meta: {

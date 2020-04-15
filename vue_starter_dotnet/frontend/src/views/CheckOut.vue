@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 style="background-color: white;">{{this.selectedSeatNumbers}}</h4>
+    <p style="background-color: white;">{{this.selectedSeatNumbers}}, {{this.date}}, {{this.movieId}}, {{this.price}}, {{this.startTime}}</p>
     <Purchase v-bind:showtime="startTime"></Purchase>
 
     <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
@@ -15,23 +15,23 @@ export default {
   },
   data() {
     return {
-      movieId: 0,
-      selectedSeatNumbers: ['F2', 'F3']
+      movieId: 314,
+      selectedSeatNumbers: ["No seats selected"],
+      date: "no date", //YYYY-MM-DD
+      startTime: "no time", //HH:MM
+      price: 3.14
     };
   },
-  props: {
-    date: String, //YYYY-MM-DD
-    startTime: String, //HH:MM
-    price: Number
-  },
+
   created() {
     this.movieId = this.$route.params.id;
     if (this.$route.params.selectedSeats) {
       this.selectedSeatNumbers = this.$route.params.selectedSeats;
     }
-    console.log(
-      `Checkout created with seatnums: ${this.$route.params.selectedSeats}`
-    );
+    console.log(this.$route.params);
+    this.date = this.$route.params.date
+    this.startTime = this.$route.params.startTime
+    this.price = this.$route.params.price
   }
 };
 </script>

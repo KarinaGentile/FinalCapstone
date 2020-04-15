@@ -68,7 +68,7 @@ export default {
       console.log("Selection confirmed");
       console.log(this.selectedStartTime);
       if (this.totalTickets > 0) {
-        this.$emit("selection-confirmed", this.totalTickets);
+        this.$emit("selection-confirmed", this.totalTickets, this.totalPrice);
       } else {
         window.alert("One or more tickets must be selected");
       }
