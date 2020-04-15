@@ -23,7 +23,8 @@
     </div>
     
     <p></p>
-        <router-link v-bind:to="{name:'check-out'}"><input class="block" type="button" value="Proceed to CheckOut" /></router-link>
+    
+        <router-link v-if="totalTickets === numSeatsSelected" v-bind:to="{name:'check-out'}"><input class="block" type="button" value="Proceed to CheckOut" /></router-link>
   </div>
 </template>
 <!-- 
