@@ -2,7 +2,7 @@
   <div id="ticketInterface">
     <h3>Please select your tickets:</h3>
     <ul class="flexcontainer">
-    <label>Adults ($8.75):</label>
+    <label>ADULTS ($8.75):</label>
     <input
     id="Adult"
       @change="getTotalTickets"
@@ -11,7 +11,7 @@
       min="0"
       v-model.number="adultTickets"
     />
-    <label>Children ($5.25):</label>
+    <label>CHILDREN ($5.25):</label>
     <input
     id="Child"
       @change="getTotalTickets"
@@ -20,7 +20,7 @@
       min="0"
       v-model.number="childTickets"
     />
-    <label>Seniors ($6.00):</label>
+    <label>SENIORS ($6.00):</label>
     <input
     id="Senior"
       @change="getTotalTickets"
@@ -30,7 +30,7 @@
       v-model.number="seniorTickets"
     />
     <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
-    <p class="estimate" v-bind:key="totalPrice">Your estimated total is {{totalPrice}} + tax</p>
+    <p class="estimate" v-bind:key="totalPrice">TOTAL: {{totalPrice}}+ tax</p>
     <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
     <input @click="confirmSelection" class="block" type="button" value="Select Seats" />
     </ul>
@@ -130,6 +130,9 @@ function newGetTotalPrice(
 </script>
 
 <style scoped>
+#label{
+  text-emphasis: strong;
+}
 #ticketInterface {
   padding-left: 3px;
   padding-right: 3px;
