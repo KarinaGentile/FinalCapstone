@@ -10,7 +10,7 @@
           <label>Last Name:</label>
           <input id="lastName" type="text" required v-model="lastName" />
           <label>Email:</label>
-          <input id="email" type="text" email="true" required v-model="email" />
+          <input id="email" type="text" [email] required v-model="email" />
           <label>Street Address:</label>
           <input id="streetAddress" type="text" required="true" />
           <label>City:</label>
@@ -48,7 +48,7 @@ export default {
   methods: {
     buyTickets() {
       if (this.firstName != "" && this.lastName !="" && this.email !="" && this.state !="" && this.zipcode !="" && this.country !="") {
-        alert("buy the tickets");
+        alert("You have selected {{totalTickets}}} tickets for {{moviename}} at {{showtime}}"); 
         this.$router.push({
           name: "receipt",
           params: { id: 1 } //replace this with the actual purchaseId
