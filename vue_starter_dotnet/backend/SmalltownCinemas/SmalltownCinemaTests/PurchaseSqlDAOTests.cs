@@ -49,7 +49,7 @@ namespace SmalltownCinemaTests
             seatNumbers.Add("B2");
             seatNumbers.Add("B3");
             seatNumbers.Add("B4");
-            int actual = purchaseDAO.CreateNewTickets(4, 268, seatNumbers, 5);
+            int actual = purchaseDAO.CreateNewTickets(4, 18, seatNumbers, 5);
             int expected = seatNumbers.Count;
             Assert.AreEqual(expected, actual);
         }
