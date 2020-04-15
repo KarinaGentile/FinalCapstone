@@ -10,7 +10,7 @@ namespace SmalltownCinemas.DAL
     {
         List<Ticket> GetReservedSeatsByShowingId(int showingId);
         List<Ticket> GetReservedSeats(int movieId, string date, string startTime);
-        Purchase CreateNewPurchase(double totalPrice);
+        Purchase CreateNewPurchase(double totalPrice, int userId = 1);
         int CreateNewTickets(int purchaseId, int showingId, List<string> seatNumbers, double price);
         void AdminSetupPurchasesAndTickets();
     }

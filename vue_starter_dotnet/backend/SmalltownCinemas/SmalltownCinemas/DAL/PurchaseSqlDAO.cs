@@ -22,10 +22,10 @@ namespace SmalltownCinemas.DAL
             throw new NotImplementedException();
         }
 
-        public Purchase CreateNewPurchase(double totalPrice)
+        public Purchase CreateNewPurchase(double totalPrice, int userId = 1)
         {
             Purchase purchase = new Purchase();
-            purchase.UserId = 1;
+            purchase.UserId = userId;
             purchase.DateTime = DateTime.Now;
             purchase.TotalPrice = totalPrice;
 
