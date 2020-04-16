@@ -15,11 +15,11 @@ export default {
   },
   data() {
     return {
-      movieId: 314,
+      movieId: 0,
       selectedSeatNumbers: ["No seats selected"],
       date: "no date", //YYYY-MM-DD
       startTime: "no time", //HH:MM
-      price: 3.14
+      price: 0
     };
   },
 
