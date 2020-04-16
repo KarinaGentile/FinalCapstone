@@ -1,6 +1,7 @@
 <template>
   <div>
     <section class="centeredPanel">
+      <p class="reservefont">You are reserving seats:{{this.selectedSeatNumbers.slice(0,this.selectedSeatNumbers.length-1)}}, on {{this.date}}, for {{this.movieId}}, Start Time:{{this.startTime}} Total Price is:{{this.price}}</p>
       <h3 class="text">Billing Information</h3>
       <p></p>
       <form>
@@ -120,5 +121,8 @@ export default {
 .flexcontainer {
   align-content: center;
   padding: 10px;
+}
+.reservefont{
+  color:white;
 }
 </style>

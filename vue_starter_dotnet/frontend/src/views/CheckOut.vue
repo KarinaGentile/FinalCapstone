@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="background-color: white;">{{this.selectedSeatNumbers}}, {{this.date}}, {{this.movieId}}, {{this.price}}, {{this.startTime}}</p>
+    
     <Purchase v-bind:startTime="startTime"
     v-bind:movieId="movieId"
     v-bind:selectedSeatNumbers="selectedSeatNumbers"
