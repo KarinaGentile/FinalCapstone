@@ -31,6 +31,18 @@ namespace SmalltownCinemas.DAL
                     {
                         userId = Convert.ToInt32(rdr["userId"]);
                     }
+                    else
+                    {
+                        rdr.Close();
+                        string sql2 = @"insert into users
+                                        (email, password)
+                                        values
+                                        (@email, 'password')
+                                        select @@IDENTITY";
+                        SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                        cmd2.Parameters.AddWithValue("@email", email);
+                        userId = Convert.ToInt32(cmd2.ExecuteScalar());
+                    }
                 }
             }
             catch (Exception)
