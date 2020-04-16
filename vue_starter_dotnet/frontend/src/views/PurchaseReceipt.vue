@@ -3,22 +3,23 @@
     <section id="centeredPanel">
       <div id="info">
         <h2>Receipt for Purchase #: {{purchaseId}}</h2>
-        <p>**********************************************************</p>
+       
         <p id="bold">Movie Title: {{receipt.title}}</p>
-        <p>**********************************************************</p>
+        
         <p>Number of Tickets: {{receipt.numTickets}}</p>
         <p>Customer Email: {{receipt.email}}</p>
 
         <p>Theater Number: {{receipt.theater}}</p>
         <p>Start Time: {{receipt.startTime}}</p>
 
-        <p>**********************************************************</p>
+        
         <p id="bold">Total Price: ${{receipt.totalPrice}}</p>
-        <p>**********************************************************</p>
+       
       </div>
       <div id="info2">
+        <p class="list">Your reserved seats are:</p>
         <ul>
-          <p>Seat Numbers:</p>
+          
           <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
         </ul>
         <p id="purchase">Purchase Timestamp: {{receipt.purchaseTimestamp}}</p>
@@ -100,9 +101,12 @@ export default {
 #purchase {
   padding-top: 5%;
 }
-
+.list{
+  text-align:center;
+}
 #bold {
   font-weight: bold;
   text-align: center;
+  border:2px solid darkblue;
 }
 </style>
