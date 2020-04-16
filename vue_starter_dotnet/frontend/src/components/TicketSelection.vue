@@ -178,6 +178,11 @@ justify-content: center;
 .block {
   display: block;
   align-content: center;
+    padding: 10px;
+  background-color: lightgrey;
+  font-weight: bolder;
+  color: rgb(85, 7, 7);
+  border-block-end-color: darkred;
 }
 
 .estimate {

@@ -80,9 +80,18 @@ export default {
 <style>
 .text{
   color:white;
-  text-align: center;
+  align-content: center;
 }
 .block{
   align-content: center;
+    padding: 10px;
+  background-color: lightgrey;
+  font-weight: bolder;
+  color: rgb(85, 7, 7);
+  border-block-end-color: darkred;
+}
+.flexcontainer{
+  align-content:center;
+  padding:10px;
 }
 </style>
