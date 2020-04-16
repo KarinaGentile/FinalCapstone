@@ -22,7 +22,7 @@ namespace SmalltownCinemas.DAL
             throw new NotImplementedException();
         }
 
-        public Purchase CreateNewPurchase(double totalPrice, int userId = 1)
+        public Purchase CreateNewPurchase(double totalPrice, int userId)
         {
             Purchase purchase = new Purchase();
             purchase.UserId = userId;
@@ -37,9 +37,10 @@ namespace SmalltownCinemas.DAL
                     string sql = @"insert into Purchases
                                 (UserId,DateTime,Total_Price)
                                 values
-                                (1,GETDATE(),@tPrice)
+                                (@uid,GETDATE(),@tPrice)
                                 select @@identity";
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@uid", userId);
                     cmd.Parameters.AddWithValue("@tPrice", purchase.TotalPrice);
                     purchase.PurchaseId = Convert.ToInt32(cmd.ExecuteScalar());
 
