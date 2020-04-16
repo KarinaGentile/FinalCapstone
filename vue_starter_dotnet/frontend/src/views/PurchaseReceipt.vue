@@ -4,25 +4,25 @@
       <div id="info">
       <h2>Receipt for Purchase #: {{purchaseId}}</h2>
       <p>**********************************************************</p>
-      <p id="bold">Movie title: {{receipt.movieName}}</p>
+      <p id="bold">Movie Title: {{receipt.movieName}}</p>
       <p>**********************************************************</p>
-      <p>Number of tickets: {{receipt.numTickets}}</p>
-      <p>Customer name: {{receipt.customerName}}</p>
+      <p>Number of Tickets: {{receipt.numTickets}}</p>
+      <p>Customer Name: {{receipt.customerName}}</p>
       
-      <p>Theater number: {{receipt.theater}}</p>
-      <p>Start time: {{receipt.startTime}}</p>
+      <p>Theater Number: {{receipt.theater}}</p>
+      <p>Start Time: {{receipt.startTime}}</p>
       
       <p>**********************************************************</p>
-      <p id="bold">Total price: ${{receipt.price}}</p>
+      <p id="bold">Total Price: ${{receipt.price}}</p>
       <p>**********************************************************</p>
 
       </div>
       <div id="info2" >
       <ul>
-      <p>Seat numbers</p>
+      <p>Seat Numbers:</p>
       <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
       </ul>
-      <p id="purchase">Purchase timestamp: {{receipt.purchaseTimeStamp}}</p>
+      <p id="purchase">Purchase Timestamp: {{receipt.purchaseTimeStamp}}</p>
       </div>
     </section>
   </div>
