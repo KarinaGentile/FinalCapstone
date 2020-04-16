@@ -15,11 +15,13 @@ namespace SmalltownCinemas.Controllers
     {
         private IPurchaseDAO purchaseDAO;
         private IUserDAO userDAO;
+        private IShowingDAO showingDAO;
 
-        public PurchaseController(IPurchaseDAO purchase, IUserDAO user)
+        public PurchaseController(IPurchaseDAO purchase, IUserDAO user, IShowingDAO showing)
         {
             this.purchaseDAO = purchase;
             this.userDAO = user;
+            this.showingDAO = showing;
         }
 
 
@@ -49,14 +51,19 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(seats);
         }
 
-        [HttpGet("new/{email}/{price}/{seatStr}")]
-        public IActionResult ExecutePurchase(string email, string price, string seatStr)
+        [HttpGet("new/{email}/{price}/{seatStr}/{movieId}/{date}/{startTime}")]
+        public IActionResult ExecutePurchase(string email, string price, string seatStr, int movieId, string date, string startTime)
         {
             int userId = userDAO.GetUserIdByEmailAddress(email);
             double priceTotal = Convert.ToDouble(price);
+            if (seatStr[seatStr.Length - 1] == '-')
+            {
+                seatStr = seatStr.Substring(0, seatStr.Length - 1);
+            }
             List<string> seats = new List<string>();
             seats.AddRange(seatStr.Split('-'));
             Purchase purchase = purchaseDAO.CreateNewPurchase(priceTotal, userId);
+            int showingId = showingDAO.GetShowingId(movieId, date, startTime);
             //int numTickets = purchaseDAO.CreateNewTickets(purchase.PurchaseId, 15, seats, priceTotal);
             return new JsonResult(purchase);
         }

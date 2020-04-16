@@ -90,7 +90,7 @@ namespace SmalltownCinemas.DAL
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -144,12 +144,40 @@ order by starttime";
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
             }
             return showings;
+        }
+
+        public int GetShowingId(int movieId, string date, string startTime)
+        {
+            int showingId = 0;
+            string dateTime = date + " " + startTime;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = @"select showingid from showings 
+                            where movieId = @mid
+                            and StartTime = @stime";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@mid", movieId);
+                    cmd.Parameters.AddWithValue("@stime", dateTime);
+
+                    showingId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return showingId;
         }
     }
 }
