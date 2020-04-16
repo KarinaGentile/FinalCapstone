@@ -4,7 +4,7 @@
      <ul class="flexcontainer">
     <span>
    
-    <label>ADULTS($8.75):</label>
+    <label>ADULTS($8.75):   </label>
     <input
     id="Adult"
       @change="getTotalTickets"
@@ -32,7 +32,7 @@
       </ul>
         <ul class="flexcontainer">
     <span>
-    <label>SENIORS($6.00):</label>
+    <label>SENIORS($6.00):   </label>
     <input
     id="Senior"
       @change="getTotalTickets"
@@ -45,7 +45,7 @@
     </ul>
     <ul class="flexcontainer">
     <p v-bind:key="totalTickets" class="block">Total number of tickets: {{totalTickets}}</p>
-    <p class="estimate" v-bind:key="totalPrice">TOTAL: {{totalPrice}}+ tax</p>
+    <p class="estimate" v-bind:key="totalPrice">TOTAL: {{totalPrice}} + tax</p>
     <p>Catching a film before noon? Enjoy $2.00 off per ticket with our Matinee Special!</p>
     <input @click="confirmSelection" class="block" type="button" value="Select Seats" />
     </ul> 

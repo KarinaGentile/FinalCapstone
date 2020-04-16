@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="floatright">
-      <router-link to="/">Home</router-link>
+      <router-link to="/"><button>Home</button></router-link>
     </div>
       </div>
 
@@ -155,7 +155,7 @@ align-items: center;
 justify-content: center;
 }
 .floatright{
-  align-content:right;
+  float:center;
 }
 
 .fade-in {
