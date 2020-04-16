@@ -15,7 +15,7 @@ namespace SmalltownCinemas.DAL
             this.connectionString = connString;
         }
 
-        
+
 
         public void AdminSetupPurchasesAndTickets()
         {
@@ -77,7 +77,7 @@ namespace SmalltownCinemas.DAL
                     cmd.Parameters.AddWithValue("@price", price);
                     for (int i = 0; i < seatNumbers.Count; i++)
                     {
-                        cmd.Parameters.AddWithValue($"@seat{i}",seatNumbers[i]);
+                        cmd.Parameters.AddWithValue($"@seat{i}", seatNumbers[i]);
                     }
 
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -159,6 +159,49 @@ namespace SmalltownCinemas.DAL
 
 
             return tickets;
+        }
+
+        public Receipt GetPurchaseInfoForReceipt(int purchaseId)
+        {
+            Receipt receipt = new Receipt();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = @"select p.PurchaseId, u.email, p.Total_Price, s.TheaterId, s.StartTime, m.Title, t.SeatName, p.DateTime from Purchases p
+                                    join tickets t on p.PurchaseId = t.PurchaseId
+                                    join Users u on p.UserId = u.UserId
+                                    join showings s on t.ShowingId = s.ShowingId
+                                    join movies m on s.MovieId = m.MovieId
+                                    where p.PurchaseId = @pid";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@pid", purchaseId);
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    bool didReadARow = false;
+                    while (rdr.Read())
+                    {
+                        if (!didReadARow)
+                        {
+                            receipt.Email = Convert.ToString(rdr["email"]);
+                            receipt.PurchaseId = Convert.ToInt32(rdr["purchaseid"]);
+                            receipt.TotalPrice = Convert.ToDouble(rdr["total_price"]);
+                            receipt.TheaterId = Convert.ToInt32(rdr["theaterid"]);
+                            receipt.StartTime = Convert.ToString(rdr["starttime"]);
+                            receipt.Title = Convert.ToString(rdr["title"]);
+                            receipt.PurchaseTimestamp = Convert.ToString(rdr["datetime"]);
+                            didReadARow = true;
+                        }
+                        receipt.SeatNumbers.Add(Convert.ToString(rdr["seatname"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return receipt;
         }
 
         private Ticket RowToTicket(SqlDataReader rdr)
