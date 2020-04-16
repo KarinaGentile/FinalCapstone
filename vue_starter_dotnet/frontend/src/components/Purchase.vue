@@ -18,9 +18,9 @@
           <label>State:</label>
           <input id="state" type="text" required="true" v-model="state" />
           <label>Zip Code:</label>
-          <input id="zipcode" type="text" required="true" v-model="zipcode"/>
+          <input id="zipcode" type="text" required="true" v-model="zipcode" />
           <label>Country:</label>
-          <input id="country" type="text" required="true" v-model="country"/>
+          <input id="country" type="text" required="true" v-model="country" />
         </ul>
         <input @click="buyTickets" class="block" type="button" value="Buy Tickets" />
         <!--A purchase receipt generates using the above inputs, 
@@ -47,19 +47,30 @@ export default {
   },
   methods: {
     buyTickets() {
-      if (this.firstName != "" && this.lastName !="" && this.email !="" && this.state !="" && this.zipcode !="" && this.country !="") {
-        window.alert(`You have selected ${this.totalTickets} tickets for ${this.movieName} at ${this.showtime}`); 
-        this.$router.push({
-          name: "receipt",
-          params: { id: 1 } //replace this with the actual purchaseId
-        });
+      if (
+        this.firstName != "" &&
+        this.lastName != "" &&
+        this.email != "" &&
+        this.state != "" &&
+        this.zipcode != "" &&
+        this.country != ""
+      ) {
+        // window.alert(`You have selected ${this.totalTickets} tickets for ${this.movieName} at ${this.showtime}`);
+        let readyToLoadNextPage = false;
+        
+        if (readyToLoadNextPage) {
+          this.$router.push({
+            name: "receipt",
+            params: { id: 1 } //replace this with the actual purchaseId
+          });
+        }
       }
     }
   },
-  props:{
-    totalTickets:Number,
-    movieName:String,
-    showtime:String
+  props: {
+    totalTickets: Number,
+    movieName: String,
+    showtime: String
   }
 };
 </script>

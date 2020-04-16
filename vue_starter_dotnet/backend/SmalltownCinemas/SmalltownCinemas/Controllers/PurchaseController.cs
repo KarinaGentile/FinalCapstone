@@ -14,11 +14,15 @@ namespace SmalltownCinemas.Controllers
     public class PurchaseController : ControllerBase
     {
         private IPurchaseDAO purchaseDAO;
+        private IUserDAO userDAO;
 
-        public PurchaseController(IPurchaseDAO purchase)
+        public PurchaseController(IPurchaseDAO purchase, IUserDAO user)
         {
             this.purchaseDAO = purchase;
+            this.userDAO = user;
         }
+
+
         // make a new purchase
         //  need what inputs? 
         //      purchases table: user id, total price
@@ -45,6 +49,11 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(seats);
         }
 
-        //[HttpPost("")]
+        [HttpGet("{email}")]
+        public IActionResult GetUserIdByEmail(string email)
+        {
+            return new JsonResult(userDAO.GetUserIdByEmailAddress(email));
+        }
+        
     }
 }
