@@ -7,7 +7,7 @@
         <p id="bold">Movie Title: {{receipt.title}}</p>
         <p>**********************************************************</p>
         <p>Number of Tickets: {{receipt.numTickets}}</p>
-        <p>Customer Name: {{receipt.email}}</p>
+        <p>Customer Email: {{receipt.email}}</p>
 
         <p>Theater Number: {{receipt.theater}}</p>
         <p>Start Time: {{receipt.startTime}}</p>

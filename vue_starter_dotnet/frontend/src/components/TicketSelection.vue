@@ -57,9 +57,9 @@ export default {
   data() {
     return {
       childTickets: 0,
-      adultTickets: 1,
+      adultTickets: 0,
       seniorTickets: 0,
-      totalTickets: 1,
+      totalTickets: 0,
       maxChild: 9,
       maxAdult: 9,
       maxSenior: 9,
