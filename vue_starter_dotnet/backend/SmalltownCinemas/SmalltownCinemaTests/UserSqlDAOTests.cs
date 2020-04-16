@@ -7,7 +7,7 @@ using System.Text;
 namespace SmalltownCinemaTests
 { 
     [TestClass]
-    public class UserSwlDAOTests
+    public class UserSqlDAOTests
     {
         private const string connString = "Server=.\\SQLExpress; Database=SmallTownCinema; Trusted_Connection=True;";
         IUserDAO userDAO = new UserSqlDAO(connString);
