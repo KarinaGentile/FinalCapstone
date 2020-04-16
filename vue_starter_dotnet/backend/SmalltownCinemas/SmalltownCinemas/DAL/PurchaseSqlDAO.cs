@@ -186,7 +186,7 @@ namespace SmalltownCinemas.DAL
                             receipt.Email = Convert.ToString(rdr["email"]);
                             receipt.PurchaseId = Convert.ToInt32(rdr["purchaseid"]);
                             receipt.TotalPrice = Convert.ToDouble(rdr["total_price"]);
-                            receipt.TheaterId = Convert.ToInt32(rdr["theaterid"]);
+                            receipt.Theater = Convert.ToInt32(rdr["theaterid"]);
                             receipt.StartTime = Convert.ToString(rdr["starttime"]);
                             receipt.Title = Convert.ToString(rdr["title"]);
                             receipt.PurchaseTimestamp = Convert.ToString(rdr["datetime"]);

@@ -2,27 +2,26 @@
   <div>
     <section id="centeredPanel">
       <div id="info">
-      <h2>Receipt for Purchase #: {{purchaseId}}</h2>
-      <p>**********************************************************</p>
-      <p id="bold">Movie Title: {{receipt.movieName}}</p>
-      <p>**********************************************************</p>
-      <p>Number of Tickets: {{receipt.numTickets}}</p>
-      <p>Customer Name: {{receipt.customerName}}</p>
-      
-      <p>Theater Number: {{receipt.theater}}</p>
-      <p>Start Time: {{receipt.startTime}}</p>
-      
-      <p>**********************************************************</p>
-      <p id="bold">Total Price: ${{receipt.price}}</p>
-      <p>**********************************************************</p>
+        <h2>Receipt for Purchase #: {{purchaseId}}</h2>
+        <p>**********************************************************</p>
+        <p id="bold">Movie Title: {{receipt.title}}</p>
+        <p>**********************************************************</p>
+        <p>Number of Tickets: {{receipt.numTickets}}</p>
+        <p>Customer Name: {{receipt.email}}</p>
 
+        <p>Theater Number: {{receipt.theater}}</p>
+        <p>Start Time: {{receipt.startTime}}</p>
+
+        <p>**********************************************************</p>
+        <p id="bold">Total Price: ${{receipt.totalPrice}}</p>
+        <p>**********************************************************</p>
       </div>
-      <div id="info2" >
-      <ul>
-      <p>Seat Numbers:</p>
-      <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
-      </ul>
-      <p id="purchase">Purchase Timestamp: {{receipt.purchaseTimeStamp}}</p>
+      <div id="info2">
+        <ul>
+          <p>Seat Numbers:</p>
+          <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
+        </ul>
+        <p id="purchase">Purchase Timestamp: {{receipt.purchaseTimestamp}}</p>
       </div>
     </section>
   </div>
@@ -36,13 +35,13 @@ export default {
       receipt: {
         purchaseId: 1,
         numTickets: 2,
-        customerName: "John Movie",
-        price: 100.0,
+        email: "John Movie",
+        totalPrice: 100.0,
         theater: "1",
         startTime: "10:00 am April 16th, 2020",
-        movieName: "Wreck-it ralph",
+        title: "Wreck-it ralph",
         seatNumbers: ["F1", "G4"],
-        purchaseTimeStamp: "11:10 am April 15th, 2020"
+        purchaseTimestamp: "11:10 am April 15th, 2020"
       },
       movieId: 0,
       userId: 0,
@@ -53,12 +52,26 @@ export default {
   created() {
     this.purchaseId = this.$route.params.id;
     //here we will look up the API to get the purchase with the Id
+    this.lookupReceipt();
+  },
+  methods: {
+    lookupReceipt() {
+      let url = process.env.VUE_APP_REMOTE_API;
+      url += `/api/purchase/lookup/${this.purchaseId}`;
+      fetch(url)
+        .then(response => {
+          return response.json();
+        })
+        .then(json => {
+          this.receipt = json;
+        });
+    }
   }
 };
 </script>
 
 <style>
-#centeredPanel{
+#centeredPanel {
   clear: both;
   display: block;
   width: 100%;
@@ -77,22 +90,19 @@ export default {
   align-content: center;
   text-align: center;
 }
-#info{
+#info {
   text-align: left;
-  
 }
-#info2{
+#info2 {
   padding-top: 5px;
   text-align: center;
 }
-#purchase{
+#purchase {
   padding-top: 5%;
 }
 
-#bold{
+#bold {
   font-weight: bold;
   text-align: center;
 }
-
-
 </style>
