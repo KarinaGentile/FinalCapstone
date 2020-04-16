@@ -3,23 +3,20 @@
     <section id="centeredPanel">
       <div id="info">
         <h2>Receipt for Purchase #: {{purchaseId}}</h2>
-       
+
         <p id="bold">Movie Title: {{receipt.title}}</p>
-        
+
         <p>Number of Tickets: {{receipt.numTickets}}</p>
         <p>Customer Email: {{receipt.email}}</p>
 
         <p>Theater Number: {{receipt.theater}}</p>
         <p>Start Time: {{receipt.startTime}}</p>
 
-        
         <p id="bold">Total Price: ${{receipt.totalPrice}}</p>
-       
       </div>
       <div id="info2">
         <p class="list">Your reserved seats are:</p>
         <ul>
-          
           <li v-bind:key="sn" v-for="sn in receipt.seatNumbers">{{sn}}</li>
         </ul>
         <p id="purchase">Purchase Timestamp: {{receipt.purchaseTimestamp}}</p>
@@ -47,7 +44,8 @@ export default {
       movieId: 0,
       userId: 0,
       theaterId: 0,
-      showingId: 0
+      showingId: 0,
+      // formattedPrice: formatter.format(this.receipt.totalPrice)
     };
   },
   created() {
@@ -69,6 +67,12 @@ export default {
     }
   }
 };
+
+// const formatter = new Intl.NumberFormat("en-US", {
+//   style: "currency",
+//   currency: "USD",
+//   minimumFractionDigits: 2
+// });
 </script>
 
 <style>
@@ -101,12 +105,12 @@ export default {
 #purchase {
   padding-top: 5%;
 }
-.list{
-  text-align:center;
+.list {
+  text-align: center;
 }
 #bold {
   font-weight: bold;
   text-align: center;
-  border:2px solid darkblue;
+  border: 2px solid darkblue;
 }
 </style>
