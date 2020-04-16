@@ -5,10 +5,10 @@
       it's then imported into movie moviedetail
       each seat is able to be clicked on or off unless already reserved
     -->
-    <h3>Please select your seats</h3>
-    <p>You have {{totalTickets - numSeatsSelected}} tickets remaining</p>
+    <h3 class="text">Please select your seats</h3>
+    <h4 class="text">You have {{totalTickets - numSeatsSelected}} tickets remaining</h4>
     <br />
-    <p>----Screen----</p>
+    <p class="screen">Screen</p>
     <div id="seatGridContainer">
       <input
         type="button"
@@ -175,5 +175,20 @@ input {
   font-weight: bolder;
   color: rgb(85, 7, 7);
   border-block-end-color: darkred;
+}
+
+.text{
+  color:ghostwhite;
+}
+
+.screen{
+  color:honeydew;
+  border:black;
+  background-color:black;
+  width: 100%;
+  height: 25px;
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 </style>
