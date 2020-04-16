@@ -64,8 +64,8 @@ namespace SmalltownCinemas.Controllers
             seats.AddRange(seatStr.Split('-'));
             Purchase purchase = purchaseDAO.CreateNewPurchase(priceTotal, userId);
             int showingId = showingDAO.GetShowingId(movieId, date, startTime);
-            //int numTickets = purchaseDAO.CreateNewTickets(purchase.PurchaseId, 15, seats, priceTotal);
-            return new JsonResult(purchase);
+            int numTickets = purchaseDAO.CreateNewTickets(purchase.PurchaseId, showingId, seats, priceTotal);
+            return new JsonResult(new { purchase, numTickets});
         }
 
     }
