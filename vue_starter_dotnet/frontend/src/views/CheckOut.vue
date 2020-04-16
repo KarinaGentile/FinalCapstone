@@ -1,7 +1,11 @@
 <template>
   <div>
     <p style="background-color: white;">{{this.selectedSeatNumbers}}, {{this.date}}, {{this.movieId}}, {{this.price}}, {{this.startTime}}</p>
-    <Purchase v-bind:showtime="startTime"></Purchase>
+    <Purchase v-bind:startTime="startTime"
+    v-bind:movieId="movieId"
+    v-bind:selectedSeatNumbers="selectedSeatNumbers"
+    v-bind:date="date"
+    v-bind:price="price"></Purchase>
 
     <!--PurchaseReceipt generates & is emailed to customer, PurchaseReceipt is also able to be a bookmarked as a link -->
   </div>

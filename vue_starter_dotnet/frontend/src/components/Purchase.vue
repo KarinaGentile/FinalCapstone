@@ -42,7 +42,8 @@ export default {
       city: "",
       state: "",
       zipcode: "",
-      country: ""
+      country: "",
+      purchaseId: 0
     };
   },
   methods: {
@@ -56,42 +57,68 @@ export default {
         this.country != ""
       ) {
         // window.alert(`You have selected ${this.totalTickets} tickets for ${this.movieName} at ${this.showtime}`);
-        let readyToLoadNextPage = false;
-        
-        if (readyToLoadNextPage) {
-          this.$router.push({
-            name: "receipt",
-            params: { id: 1 } //replace this with the actual purchaseId
+        // let readyToLoadNextPage = false;
+        let url = process.env.VUE_APP_REMOTE_API;
+        url += `/api/purchase/new/${this.email}/${this.price}/${this.selectedSeatNumbers}/${this.movieId}/${this.date}/${this.startTime}`;
+        fetch(url)
+          .then(response => {
+            console.log("start log purchase fetch");
+            console.log(response);
+            console.log("end log purchase fetch");
+            return response.json();
+          })
+          .then(json => {
+            console.log("start log purchase json");
+
+            console.log(json);
+            console.log(json.purchase.purchaseId);
+            console.log("end log purchase json");
+            if (json.purchase.purchaseId > 0) {
+              this.purchaseId = json.purchase.purchaseId;
+              this.$router.push({
+                name: "receipt",
+                params: { id: this.purchaseId }
+              });
+            }
           });
-        }
       }
     }
   },
   props: {
-    totalTickets: Number,
-    movieName: String,
-    showtime: String
+    // totalTickets: Number,
+    movieId: Number,
+    selectedSeatNumbers: String,
+    date: String,
+    price: Number,
+    startTime: String
+  },
+  created() {
+    console.log("start log purchase created");
+    console.log(`movie id: ${this.movieId}`);
+    console.log(`seats: ${this.selectedSeatNumbers}`);
+    console.log(`date: ${this.date}`);
+    console.log(`start time: ${this.startTime}`);
+    console.log(`price: ${this.price}`);
+    console.log("end log purchase created");
   }
 };
-
-
 </script>
 
 <style>
-.text{
-  color:white;
+.text {
+  color: white;
   align-content: center;
 }
-.block{
+.block {
   align-content: center;
-    padding: 10px;
+  padding: 10px;
   background-color: lightgrey;
   font-weight: bolder;
   color: rgb(85, 7, 7);
   border-block-end-color: darkred;
 }
-.flexcontainer{
-  align-content:center;
-  padding:10px;
+.flexcontainer {
+  align-content: center;
+  padding: 10px;
 }
 </style>

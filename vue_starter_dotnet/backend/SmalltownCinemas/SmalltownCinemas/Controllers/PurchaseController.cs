@@ -55,6 +55,7 @@ namespace SmalltownCinemas.Controllers
         public IActionResult ExecutePurchase(string email, string price, string seatStr, int movieId, string date, string startTime)
         {
             int userId = userDAO.GetUserIdByEmailAddress(email);
+            price = price.Substring(1);
             double priceTotal = Convert.ToDouble(price);
             if (seatStr[seatStr.Length - 1] == '-')
             {
