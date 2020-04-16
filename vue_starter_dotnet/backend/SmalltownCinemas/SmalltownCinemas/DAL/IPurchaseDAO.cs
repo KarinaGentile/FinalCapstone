@@ -13,5 +13,6 @@ namespace SmalltownCinemas.DAL
         Purchase CreateNewPurchase(double totalPrice, int userId = 1);
         int CreateNewTickets(int purchaseId, int showingId, List<string> seatNumbers, double price);
         void AdminSetupPurchasesAndTickets();
+        Receipt GetPurchaseInfoForReceipt(int purchaseId);
     }
 }

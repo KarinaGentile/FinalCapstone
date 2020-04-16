@@ -68,5 +68,12 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(new { purchase, numTickets});
         }
 
+        [HttpGet("lookup/{purchaseId}")]
+        public IActionResult ReceiptLookup(int purchaseId)
+        {
+            Receipt receipt = purchaseDAO.GetPurchaseInfoForReceipt(purchaseId);
+            return new JsonResult(receipt);
+        }
+
     }
 }
