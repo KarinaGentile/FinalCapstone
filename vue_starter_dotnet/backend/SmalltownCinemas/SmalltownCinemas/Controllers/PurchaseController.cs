@@ -49,14 +49,17 @@ namespace SmalltownCinemas.Controllers
             return new JsonResult(seats);
         }
 
-        [HttpGet("{email}/{price}")]
-        public IActionResult ExecutePurchase(string email, string price)
+        [HttpGet("new/{email}/{price}/{seatStr}")]
+        public IActionResult ExecutePurchase(string email, string price, string seatStr)
         {
             int userId = userDAO.GetUserIdByEmailAddress(email);
             double priceTotal = Convert.ToDouble(price);
+            List<string> seats = new List<string>();
+            seats.AddRange(seatStr.Split('-'));
             Purchase purchase = purchaseDAO.CreateNewPurchase(priceTotal, userId);
+            //int numTickets = purchaseDAO.CreateNewTickets(purchase.PurchaseId, 15, seats, priceTotal);
             return new JsonResult(purchase);
         }
-        
+
     }
 }
