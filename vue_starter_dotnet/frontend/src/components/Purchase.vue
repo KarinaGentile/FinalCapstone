@@ -1,7 +1,9 @@
 <template>
   <div>
     <section class="centeredPanel">
-      <p class="reservefont">You are reserving seats:{{this.selectedSeatNumbers.slice(0,this.selectedSeatNumbers.length-1)}}, on {{this.date}}, for {{this.movieId}}, Start Time:{{this.startTime}} Total Price is:{{this.price}}</p>
+      <p
+        class="reservefont"
+      >You are reserving seats:{{this.selectedSeatNumbers.slice(0,this.selectedSeatNumbers.length-1)}}, on {{this.date}}, for {{this.movieTitle}}, Start Time:{{this.startTime}} Total Price is:{{this.price}}</p>
       <h3 class="text">Billing Information</h3>
       <p></p>
       <form>
@@ -44,7 +46,8 @@ export default {
       state: "",
       zipcode: "",
       country: "",
-      purchaseId: 0
+      purchaseId: 0,
+      movieTitle: ""
     };
   },
   methods: {
@@ -101,6 +104,16 @@ export default {
     console.log(`start time: ${this.startTime}`);
     console.log(`price: ${this.price}`);
     console.log("end log purchase created");
+    let url = process.env.VUE_APP_REMOTE_API;
+    url += `/api/movies/${this.movieId}`;
+    fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        this.movieTitle = json.title;
+      });
+    console.log("purchase.vue movie title: " + this.movieTitle);
   }
 };
 </script>
@@ -122,7 +135,7 @@ export default {
   align-content: center;
   padding: 10px;
 }
-.reservefont{
-  color:white;
+.reservefont {
+  color: white;
 }
 </style>
